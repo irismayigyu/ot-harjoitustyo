@@ -7,4 +7,4 @@ uus bingbong
 
 [vaatimusmaarittely.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/laskarit/viikko1/dokumentaatio/vaatimusmaarittely.md)
 
-[tyoaikakirjanpito](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/laskarit/viikko1/dokumentaatio/Tyoaikakirjanpito)
+[tyoaikakirjanpito](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/laskarit/viikko1/dokumentaatio/tyoaikakirjanpito.md)
