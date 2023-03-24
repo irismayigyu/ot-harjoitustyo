@@ -6,3 +6,5 @@ uus bingbong
 [komentorivi.txt](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
 [vaatimusmaarittely.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+
+[tyoaikakirjanpito](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/dokumentaatio/Tyoaikakirjanpito)
