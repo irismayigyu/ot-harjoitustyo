@@ -3,10 +3,10 @@ import random
 from grid import Grid
 from entities.cube import Cube
 
-pygame.display.set_caption("Ohte 2048")
-kello=pygame.time.Clock()
+pygame.display.set_caption("2048")
+clock=pygame.time.Clock()
 fps=60
-kello.tick(fps)
+clock.tick(fps)
 pygame.init()
 
 class Main:
@@ -14,7 +14,8 @@ class Main:
 
     def __init__(self):
         super().__init__()
-        ruudukko=Grid() #poistanko tästä tämän?
+        grid=Grid() 
+        cube=Cube()
         self.value=Cube.self.value
 
 
@@ -23,10 +24,10 @@ def quit_game():
     exit()
 
 if __name__ == "__main__":
-    ruudukko = Grid() 
+    grid= Grid() 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit_game()
-        ruudukko.luo_naytto()
+        grid.make_grid()
         pygame.display.update()

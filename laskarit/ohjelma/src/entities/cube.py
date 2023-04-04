@@ -7,5 +7,11 @@ class Cube:
 
     def cube_number_doubles(self):
         self.value=self.value*2
+        
+
+# kube=Cube()
+# kube.cube_number_doubles()
+# kube.cube_number_doubles()
+# print(kube.value)
 
     
