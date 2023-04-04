@@ -7,10 +7,15 @@ which provides the `--lf` and `--ff` options, as well as the `cache` fixture.
 
 See [the docs](https://docs.pytest.org/en/stable/how-to/cache.html) for more information.
 
+# 2048
 
-
+[2048](https://en.wikipedia.org/wiki/2048_(video_game)) using pygame. 
 
 [changelog.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/laskarit/ohjelma/dokumentaatio/changelog.md)
 
 [tyoaikakirjanpito.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/laskarit/ohjelma/dokumentaatio/tyoaikakirjanpito.md)
+
+[vaatimusmaarittely.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/laskarit/ohjelma/dokumentaatio/vaatimusmaarittely.md) 
+
+
 
