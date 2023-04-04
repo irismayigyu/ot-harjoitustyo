@@ -11,3 +11,6 @@ See [the docs](https://docs.pytest.org/en/stable/how-to/cache.html) for more inf
 
 
 [changelog.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/laskarit/ohjelma/dokumentaatio/changelog.md)
+
+[tyoaikakirjanpito.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/laskarit/ohjelma/dokumentaatio/tyoaikakirjanpito.md)
+
