@@ -11,11 +11,11 @@ See [the docs](https://docs.pytest.org/en/stable/how-to/cache.html) for more inf
 
 [2048](https://en.wikipedia.org/wiki/2048_(video_game)) using pygame. 
 
-[changelog.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/laskarit/ohjelma/dokumentaatio/changelog.md)
+[changelog.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/changelog.md)
 
-[tyoaikakirjanpito.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/laskarit/ohjelma/dokumentaatio/tyoaikakirjanpito.md)
+[tyoaikakirjanpito.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/tyoaikakirjanpito.md)
 
-[vaatimusmaarittely.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/laskarit/ohjelma/dokumentaatio/vaatimusmaarittely.md) 
+[vaatimusmaarittely.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/vaatimusmaarittely.md) 
 
 
 
