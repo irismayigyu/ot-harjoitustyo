@@ -9,14 +9,18 @@ class Matrix:
                       [0, 0, 0, 0],
                       [0, 0, 0, 0],
                       [0, 0, 0, 0]]
+        self.two_starter_cubes()
+        self.start1=""
+        self.start2=""
 
     def two_starter_cubes(self):
-        start1 = (random.choice(range(0, 4)), random.choice(range(0, 4)))
-        start2 = (random.choice(range(0, 4)), random.choice(range(0, 4)))
-        while start1 == start2:
-            start2 = (random.choice(range(0, 4)), random.choice(range(0, 4)))
-        self.gridm[start1[0]][start1[1]] = 2
-        self.gridm[start2[0]][start2[1]] = 2
+        self.start1 = (random.choice(range(0, 4)), random.choice(range(0, 4)))
+        self.start2 = (random.choice(range(0, 4)), random.choice(range(0, 4)))
+        while self.start1 == self.start2:
+            self.start2 = (random.choice(range(0, 4)), random.choice(range(0, 4)))
+        self.gridm[self.start1[0]][self.start1[1]] = 2
+        self.gridm[self.start2[0]][self.start2[1]] = 2
+        return self.start1,self.start2
 
     def new_spawning_cubes(self, moved):
         if moved:

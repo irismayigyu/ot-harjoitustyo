@@ -4,7 +4,7 @@ from griddrawing import Grid
 
 pygame.init()
 pygame.display.set_caption("2048")
-screen = pygame.display.set_mode((500, 500))
+screen = pygame.display.set_mode((400, 400))
 clock = pygame.time.Clock()
 FPS = 60
 clock.tick(FPS)

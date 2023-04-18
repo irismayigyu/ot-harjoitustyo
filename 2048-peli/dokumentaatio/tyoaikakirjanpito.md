@@ -10,4 +10,5 @@
 | 15.4. | 3h   | muutin rakennetta |
 | 3.4. | 3h    | tein liikkumista |
 | 17.4. | 2h   | lint ja debuggausta |
+| 87.4. | 2h   | debuggausta, vähän visuaalisuutta |
 
