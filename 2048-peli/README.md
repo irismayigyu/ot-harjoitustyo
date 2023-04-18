@@ -17,5 +17,7 @@ See [the docs](https://docs.pytest.org/en/stable/how-to/cache.html) for more inf
 
 [vaatimusmaarittely.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/vaatimusmaarittely.md) 
 
+[arkkitehtuuri.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/arkkitehtuuri.md)
+
 
 
