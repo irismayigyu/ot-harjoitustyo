@@ -19,7 +19,6 @@ class Grid:
 
     def run_loop(self):
         while True:
-            # self.screen.fill("Black")
             self.draw_cubes()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -33,7 +32,6 @@ class Grid:
                         self.matrix.movement_up()
                     elif event.key == pygame.K_DOWN:
                         self.matrix.movement_down()
-            # self.screen.fill("Black")
 
     def initialize_grid(self):
         for i in range(4):
@@ -61,6 +59,7 @@ class Grid:
 
         for cube_rect, value in self.cubes_list:
             pygame.draw.rect(self.screen, self.other_colour, cube_rect)
+            #self.cubes_list.remove(cube_rect)
             text = self.fontti.render(str(value), True, (255, 255, 255))
             text_rect = text.get_rect(center=cube_rect.center)
             self.screen.blit(text, text_rect)
