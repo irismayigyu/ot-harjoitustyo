@@ -1,6 +1,7 @@
 # 2048
 
-[2048](https://en.wikipedia.org/wiki/2048_(video_game)). 
+2048-pelissä yhdistetään laattoja käyttäen nuolinäppäimiä. Tavoite on saada mahdollisimman suuri luku.
+[2048-wikipediasivu](https://en.wikipedia.org/wiki/2048_(video_game))
 
 # Dokumentaatio
 
