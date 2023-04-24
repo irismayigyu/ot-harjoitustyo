@@ -3,19 +3,12 @@
 2048-pelissä yhdistetään laattoja käyttäen nuolinäppäimiä. Tavoite on saada mahdollisimman suuri luku.
 [2048-wikipediasivu](https://en.wikipedia.org/wiki/2048_(video_game))
 
-# Dokumentaatio
+## Dokumentaatio
 
-## Muutosloki
-[changelog.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/changelog.md)
-
-## Tyoaikakirjanpito
-[tyoaikakirjanpito.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/tyoaikakirjanpito.md)
-
-## Vaatimusmäärittely
-[vaatimusmaarittely.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/vaatimusmaarittely.md) 
-
-## Pakkauskaavio
-[arkkitehtuuri.md](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/arkkitehtuuri.md)
+[Muutosloki](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/changelog.md)
+[Tyoaikakirjanpito](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/tyoaikakirjanpito.md)
+[Vaatimusmäärittely](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/vaatimusmaarittely.md) 
+[Pakkauskaavio](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/arkkitehtuuri.md)
 
 ## Asennus
 
