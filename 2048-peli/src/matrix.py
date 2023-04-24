@@ -4,6 +4,7 @@ import random
 class Matrix:
     def __init__(self):
         self.empty_cubes = []
+        #self.grid = Grid()
         self.merge_done = False
         self.gridm = [[0, 0, 0, 0],
                       [0, 0, 0, 0],
@@ -38,6 +39,7 @@ class Matrix:
                 self.game_ends()
 
     def game_ends(self):
+        #self.grid.ending()
         pass
 
     def movement_up(self):
@@ -47,7 +49,7 @@ class Matrix:
                 if self.gridm[i][j] != 0:  # for cube in matrix
                     k = i
                     while k>0 and (self.gridm[k-1][j]==0 or self.gridm[k-1][j]==self.gridm[i][j]):
-                        k -= 1  # one row higher
+                        k -= 1 
                     if k != i:
                         if self.gridm[k][j] == self.gridm[i][j] and not self.merge_done:
                             self.gridm[k][j] *= 2
@@ -86,8 +88,12 @@ class Matrix:
             for j in range(1, 4):
                 if self.gridm[i][j] != 0 and (j == 0 or self.gridm[i][j-1] == 0):
                     k = j
-                    while k>0 and (self.gridm[i][k-1]==0 or self.gridm[i][k-1]==self.gridm[i][j]):
+                    while (k>0 and (self.gridm[i][k-1]==0 or self.gridm[i][k-1]==self.gridm[i][j])):
                         k -= 1
+                    # if k==0 and self.gridm[i][k]==self.gridm[i][j] and not self.merge_done:
+                    #     self.gridm[i][k] *= 2
+                    #     self.gridm[i][j] = 0
+                    #     self.merge_done = True
                     if k != j:
                         if self.gridm[i][k] == self.gridm[i][j] and not self.merge_done:
                             self.gridm[i][k] *= 2
@@ -105,11 +111,19 @@ class Matrix:
         for i in range(4):
             for j in range(2, -1, -1):
                 if self.gridm[i][j] != 0 and (j == 3 or self.gridm[i][j+1] == 0):
+                    #jos ruudussa on jotain ja jos ruutu on reunalla tai kohderuutu on tyhjä
                     k = j
                     while k<3 and (self.gridm[i][k+1]==0 or self.gridm[i][k+1]==self.gridm[i][j]):
+                    #kun ruutu ei ole reunimmainen ja kun kohde tyhjä tai kohde on saman arvoinen kuin ruutu. 
                         k += 1
+                    #kuvaa seuraavaa tyhjää ruutua tai ruutuaa jossa on sama arvo kuin j:ssä
+                    # if k==3 and self.gridm[i][j]==self.gridm[i][k]:
+                    #     self.gridm[i][k] *= 2
+                    #     self.gridm[i][j] = 0
+                    #     self.merge_done = True
                     if k != j:
                         if self.gridm[i][k] == self.gridm[i][j] and not self.merge_done:
+                            #jos seuraavalla ja nyk. arvot ovat samat ja ei vielä mergetty
                             self.gridm[i][k] *= 2
                             self.gridm[i][j] = 0
                             self.merge_done = True
@@ -121,25 +135,10 @@ class Matrix:
             self.new_spawning_cubes(moved)
 
 
-# matriisi = Matrix()
-# matriisi.two_starter_cubes()
-# print(matriisi.gridm)
-# matriisi.movement_up()
-# print(matriisi.gridm)
-# # matriisi.movement_down()
-# # print(matriisi.gridm)
-# # matriisi.movement_left()
-# # print(matriisi.gridm)
-# # matriisi.movement_right()
-# # print(matriisi.gridm)
-# # matriisi.movement_right()
-# # print(matriisi.gridm)
-# # matriisi.movement_left()
-# # print(matriisi.gridm)
-# # matriisi.movement_left()
-# # print(matriisi.gridm)
-# # matriisi.movement_up()
-# # print(matriisi.gridm)
-# # matriisi.movement_down()
-# # print(matriisi.gridm)
-# print("testi loppu")
+matriisi = Matrix()
+print(matriisi.gridm)
+matriisi.movement_left()
+print(matriisi.gridm)
+matriisi.movement_right()
+print(matriisi.gridm)
+print("testi loppu")
