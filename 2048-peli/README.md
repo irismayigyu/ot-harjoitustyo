@@ -6,8 +6,11 @@
 ## Dokumentaatio
 
 [Muutosloki](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/changelog.md)
+
 [Tyoaikakirjanpito](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/tyoaikakirjanpito.md)
+
 [Vaatimusmäärittely](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/vaatimusmaarittely.md) 
+
 [Pakkauskaavio](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/arkkitehtuuri.md)
 
 ## Asennus
