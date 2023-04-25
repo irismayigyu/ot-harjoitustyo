@@ -12,5 +12,6 @@
 | 17.4. | 2h   | lint ja debuggausta |
 | 18.4. | 2h   | debuggausta, vähän visuaalisuutta |
 | 24.4. | 2h   | debuggausta|
+| 25.4. | 3h   | debuggausta ja siistimistä|
 
-summa: 26h
+summa: 29h
