@@ -4,8 +4,7 @@ import random
 class Matrix:
     def __init__(self):
         self.empty_cubes = []
-        #self.grid = Grid()
-        self.merge_done = False
+        self.merge_done = [[False for _ in range(4)] for _ in range(4)]
         self.gridm = [[0, 0, 0, 0],
                       [0, 0, 0, 0],
                       [0, 0, 0, 0],
@@ -13,6 +12,7 @@ class Matrix:
         self.two_starter_cubes()
         self.start1=""
         self.start2=""
+
 
     def two_starter_cubes(self):
         self.start1 = (random.choice(range(0, 4)), random.choice(range(0, 4)))
@@ -34,7 +34,7 @@ class Matrix:
                 new_cube = random.choice(self.empty_cubes)
                 self.gridm[new_cube[0]][new_cube[1]] = 2
                 self.empty_cubes.remove(new_cube)
-                self.merge_done = False
+                self.merge_done = [[False for _ in range(4)] for _ in range(4)]
             if len(self.empty_cubes) <= 0:
                 self.game_ends()
 
@@ -46,15 +46,16 @@ class Matrix:
         moved = False
         for j in range(4):
             for i in range(1, 4):
-                if self.gridm[i][j] != 0:  # for cube in matrix
+                if self.gridm[i][j] != 0:  
                     k = i
                     while k>0 and (self.gridm[k-1][j]==0 or self.gridm[k-1][j]==self.gridm[i][j]):
                         k -= 1 
                     if k != i:
-                        if self.gridm[k][j] == self.gridm[i][j] and not self.merge_done:
+                        if self.gridm[k][j] == self.gridm[i][j] and not self.merge_done[k][j]== True \
+                            and not self.merge_done[i][j]== True:
                             self.gridm[k][j] *= 2
                             self.gridm[i][j] = 0
-                            self.merge_done = True
+                            self.merge_done[k][j]= True
                         else:
                             self.gridm[k][j] = self.gridm[i][j]
                             self.gridm[i][j] = 0
@@ -71,10 +72,11 @@ class Matrix:
                     while k<3 and (self.gridm[k+1][j]==0 or self.gridm[k+1][j]==self.gridm[i][j]):
                         k += 1
                     if k != i:
-                        if self.gridm[k][j] == self.gridm[i][j] and not self.merge_done:
+                        if self.gridm[k][j] == self.gridm[i][j] and not self.merge_done[k][j]== True \
+                            and not self.merge_done[i][j]== True:
                             self.gridm[k][j] *= 2
                             self.gridm[i][j] = 0
-                            self.merge_done = True
+                            self.merge_done[k][j]= True
                         else:
                             self.gridm[k][j] = self.gridm[i][j]
                             self.gridm[i][j] = 0
@@ -82,55 +84,47 @@ class Matrix:
         if moved:
             self.new_spawning_cubes(moved)
 
+
     def movement_left(self):
         moved = False
         for i in range(4):
+            shift = 0
+            for j in range(4):
+                if self.gridm[i][j] == 0:
+                    shift += 1
+                elif shift > 0:
+                    self.gridm[i][j - shift] = self.gridm[i][j]
+                    self.gridm[i][j] = 0
+                    moved = True
             for j in range(1, 4):
-                if self.gridm[i][j] != 0 and (j == 0 or self.gridm[i][j-1] == 0):
-                    k = j
-                    while (k>0 and (self.gridm[i][k-1]==0 or self.gridm[i][k-1]==self.gridm[i][j])):
-                        k -= 1
-                    # if k==0 and self.gridm[i][k]==self.gridm[i][j] and not self.merge_done:
-                    #     self.gridm[i][k] *= 2
-                    #     self.gridm[i][j] = 0
-                    #     self.merge_done = True
-                    if k != j:
-                        if self.gridm[i][k] == self.gridm[i][j] and not self.merge_done:
-                            self.gridm[i][k] *= 2
-                            self.gridm[i][j] = 0
-                            self.merge_done = True
-                        else:
-                            self.gridm[i][k] = self.gridm[i][j]
-                            self.gridm[i][j] = 0
-                        moved = True
+                if self.gridm[i][j - 1] == self.gridm[i][j] and not self.merge_done[i][j - 1] and not self.merge_done[i][j]:
+                    self.gridm[i][j - 1] *= 2
+                    self.gridm[i][j] = 0
+                    self.merge_done[i][j - 1] = True
+                    moved = True
         if moved:
             self.new_spawning_cubes(moved)
+
 
     def movement_right(self):
         moved = False
         for i in range(4):
-            for j in range(2, -1, -1):
-                if self.gridm[i][j] != 0 and (j == 3 or self.gridm[i][j+1] == 0):
-                    #jos ruudussa on jotain ja jos ruutu on reunalla tai kohderuutu on tyhjä
-                    k = j
-                    while k<3 and (self.gridm[i][k+1]==0 or self.gridm[i][k+1]==self.gridm[i][j]):
-                    #kun ruutu ei ole reunimmainen ja kun kohde tyhjä tai kohde on saman arvoinen kuin ruutu. 
-                        k += 1
-                    #kuvaa seuraavaa tyhjää ruutua tai ruutuaa jossa on sama arvo kuin j:ssä
-                    # if k==3 and self.gridm[i][j]==self.gridm[i][k]:
-                    #     self.gridm[i][k] *= 2
-                    #     self.gridm[i][j] = 0
-                    #     self.merge_done = True
-                    if k != j:
-                        if self.gridm[i][k] == self.gridm[i][j] and not self.merge_done:
-                            #jos seuraavalla ja nyk. arvot ovat samat ja ei vielä mergetty
-                            self.gridm[i][k] *= 2
-                            self.gridm[i][j] = 0
-                            self.merge_done = True
-                        else:
-                            self.gridm[i][k] = self.gridm[i][j]
-                            self.gridm[i][j] = 0
-                        moved = True
+            for j in range(4):
+                shift = 0
+                for q in range(j):
+                    if self.gridm[i][3-q] == 0:
+                        shift += 1
+                if shift > 0:
+                    self.gridm[i][3-j+shift] = self.gridm[i][3-j]
+                    self.gridm[i][3 - j] = 0
+                    moved = True
+                if 4 - j + shift <= 3:
+                    if self.gridm[i][4 - j +shift] == self.gridm[i][3 - j + shift] \
+                        and not self.merge_done[i][4-j+shift] \
+                        and not self.merge_done[i][3-j+shift]:
+                            self.gridm[i][4-j+shift]*=2
+                            self.gridm[i][3-j+shift]=0
+                            self.merge_done[i][4-j+shift] = True
         if moved:
             self.new_spawning_cubes(moved)
 
