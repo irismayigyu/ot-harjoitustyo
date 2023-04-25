@@ -33,7 +33,7 @@ class TestMatrix(unittest.TestCase):
         self.matrix.movement_right()
         testi=self.matrix.gridm[0][3]+self.matrix.gridm[1][3]\
             +self.matrix.gridm[2][3]+self.matrix.gridm[3][3]
-        self.assertEqual(sum(self.matrix.gridm[0])>0, True)
+        self.assertEqual(testi>0, True)
 
 
     

@@ -1,11 +1,13 @@
 import sys
 import pygame
 from griddrawing import Grid
+from ending import Ending
 
 pygame.init()
 pygame.display.set_caption("2048")
 screen = pygame.display.set_mode((400, 400))
 clock = pygame.time.Clock()
+ending = Ending(screen)
 FPS = 60
 clock.tick(FPS)
 

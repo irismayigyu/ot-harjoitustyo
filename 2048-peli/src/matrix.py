@@ -1,10 +1,10 @@
 import random
-from gamecolours import Colours
+
+
 
 class Matrix:
     def __init__(self):
         self.empty_cubes = []
-        self.colours=Colours()
         self.merge_done = [[False for _ in range(4)] for _ in range(4)]
         self.gridm = [[0, 0, 0, 0],
                       [0, 0, 0, 0],
@@ -41,6 +41,7 @@ class Matrix:
 
     def game_ends(self):
         pass
+        # self.ending.game_ends()
 
     def movement_up(self):
         moved = False
@@ -55,10 +56,10 @@ class Matrix:
                         if self.gridm[k][j] == self.gridm[i][j] \
                             and not self.merge_done[k][j] \
                                 and not self.merge_done[i][j]:
-                            if random.randint(1,10)==10:
-                                multiply=4
+                            if random.randint(1, 10) == 10:
+                                multiply = 4
                             else:
-                                multiply=2
+                                multiply = 2
                             self.gridm[k][j] *= multiply
                             self.gridm[i][j] = 0
                             self.merge_done[k][j] = True
@@ -82,10 +83,10 @@ class Matrix:
                         if self.gridm[k][j] == self.gridm[i][j] \
                             and not self.merge_done[k][j] \
                                 and not self.merge_done[i][j]:
-                            if random.randint(1,10)==10:
-                                multiply=4
+                            if random.randint(1, 10) == 10:
+                                multiply = 4
                             else:
-                                multiply=2
+                                multiply = 2
                             self.gridm[k][j] *= multiply
                             self.gridm[i][j] = 0
                             self.merge_done[k][j] = True
@@ -110,10 +111,10 @@ class Matrix:
             for j in range(1, 4):
                 if self.gridm[i][j-1] == self.gridm[i][j] \
                         and not self.merge_done[i][j-1] and not self.merge_done[i][j]:
-                    if random.randint(1,10)==10:
-                        multiply=4
+                    if random.randint(1, 10) == 10:
+                        multiply = 4
                     else:
-                        multiply=2
+                        multiply = 2
                     self.gridm[i][j-1] *= multiply
                     self.gridm[i][j] = 0
                     self.merge_done[i][j-1] = True
@@ -137,17 +138,16 @@ class Matrix:
                     if self.gridm[i][4-j+shift] == self.gridm[i][3-j+shift] \
                             and not self.merge_done[i][4-j+shift] \
                             and not self.merge_done[i][3-j+shift]:
-                        if random.randint(1,10)==10:
-                            multiply=4
+                        if random.randint(1, 10) == 10:
+                            multiply = 4
                         else:
-                            multiply=2
+                            multiply = 2
                         self.gridm[i][4-j+shift] *= multiply
-                        self.gridm[i][4-j+shift]
+                        #self.gridm[i][4-j+shift]
                         self.gridm[i][3-j+shift] = 0
                         self.merge_done[i][4-j+shift] = True
         if moved:
             self.new_spawning_cubes()
-        
 
 
 matriisi = Matrix()

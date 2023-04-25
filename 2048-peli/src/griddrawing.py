@@ -1,17 +1,18 @@
 
 import pygame
 from matrix import Matrix
+from gamecolours import Colours
 
 
 class Grid:
     def __init__(self, screen):
         self.matrix = Matrix()
-        self.gridm = self.matrix.gridm
         self.backround_colour_blue = (125, 158, 192)
         self.cube_colour_rose = (238, 169, 184)
         self.empty_cube_colour = (185, 211, 238)
         self.font = pygame.font.SysFont("Comic Sans", 19)
         self.cubes_list = []
+        self.colour = Colours()
         self.screen = screen
         self.initialize_grid()
 
@@ -21,8 +22,6 @@ class Grid:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
-                elif self.matrix.game_ends():
-                    self.game_ends()
                 else:
                     self.movement(event)
 
@@ -37,13 +36,6 @@ class Grid:
             elif event.key == pygame.K_DOWN:
                 self.matrix.movement_down()
 
-    def game_ends(self):
-        self.screen.fill(self.backround_colour_blue)
-        text = self.font.render("You Lost!", True, (255, 255, 255))
-        text_rect = text.get_rect(center=self.screen.center)
-        self.screen.blit(text, text_rect)
-        pygame.display.update()
-
     def initialize_grid(self):
         self.screen.fill(self.backround_colour_blue)
         pygame.display.update()
@@ -54,7 +46,7 @@ class Grid:
         width = 75
         for i in range(4):
             for j in range(4):
-                value = self.gridm[i][j]
+                value = self.matrix.gridm[i][j]
                 x_cord = j * (width + gap_size) + 20
                 y_cord = i * (width + gap_size) + 20
                 cube_rect = pygame.Rect(x_cord, y_cord, width, width)
@@ -63,8 +55,8 @@ class Grid:
         for cube_rect, value in self.cubes_list:
             if value != 0:
                 pygame.draw.rect(
-                    self.screen, self.cube_colour_rose, cube_rect, 0, 6)
-                text = self.font.render(str(value), True, (255, 255, 255))
+                    self.screen, self.colour.colours[value], cube_rect, 0, 6)
+                text = self.font.render(str(value), True, (0, 0, 0))
                 text_rect = text.get_rect(center=cube_rect.center)
                 self.screen.blit(text, text_rect)
             if value == 0:
