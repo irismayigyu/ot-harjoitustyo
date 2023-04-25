@@ -14,12 +14,12 @@ class TestMatrix(unittest.TestCase):
     def test_if_movement_up_works(self):
         self.matrix.two_starter_cubes()
         self.matrix.movement_up()
-        self.assertEqual(sum(self.matrix.gridm[0])>0, True)
+        self.assertEqual(sum(self.matrix.gridm[0]) > 0, True)
 
     def test_if_movement_down_works(self):
         self.matrix.two_starter_cubes()
         self.matrix.movement_down()
-        self.assertEqual(sum(self.matrix.gridm[3])>0, True)
+        self.assertEqual(sum(self.matrix.gridm[3]) > 0, True)
 
     # def test_if_movement_left_works(self):
     #     self.matrix.two_starter_cubes()
