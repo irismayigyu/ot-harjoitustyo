@@ -1,5 +1,8 @@
 # 2048
 
+
+[Release 1](https://github.com/irismayigyu/ot-harjoitustyo/releases/tag/viikko5)
+
 2048-pelissä yhdistetään laattoja käyttäen nuolinäppäimiä. Tavoite on saada mahdollisimman suuri luku.
 [2048-wikipediasivu](https://en.wikipedia.org/wiki/2048_(video_game))
 
