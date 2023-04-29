@@ -15,6 +15,6 @@
 | 25.4. | 3h   | debuggausta ja siistimistä|
 | 27.4. | 3h   | toiminnallisuutta ja värit ja lopetus|
 | 28.4. | 3h   | debuggausta, toiminnallisuutta|
-| 29.4. | 5h   | docstring, toiminnallisuutta|
+| 29.4. | 7h   | docstring, toiminnallisuutta|
 
-summa: 34h
+summa: 36h
