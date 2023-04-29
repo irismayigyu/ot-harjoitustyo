@@ -12,3 +12,8 @@
 - ruutujen liikkeiden logiikka ja yhdistäminen korjailtu
 - pelin pääpiirteet pääosin valmiita visuaalisellakin tasolla
 - liikkeet ja yhdistäminen toimivat
+
+## Viikko 6
+- lisätty ja korjailtu liikkumisen ja yhdistämisen logiikkaa
+- ending screen luotu
+- värit luotu

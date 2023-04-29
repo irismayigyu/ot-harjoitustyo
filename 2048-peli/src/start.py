@@ -1,7 +1,6 @@
 import pygame
-
-
-class Ending():
+from griddrawing import Grid
+class Start():
 
     '''Luokka, joka luo pelin päättymisnäytön
 
@@ -25,12 +24,13 @@ class Ending():
                 
         '''
         pygame.init()
-        self.font = pygame.font.SysFont("Comic Sans", 20)
+        self.font = pygame.font.SysFont("Comic Sans", 16)
         self.screen = pygame.display.set_mode((400, 400))
         self.run=True
-        self.game_ends()
+        self.grid=Grid(self.screen)
+        self.start()
 
-    def game_ends(self):
+    def start(self):
 
         '''Luokan metodi, joka luo ja piirtää päättysmisnäytön
 
@@ -41,20 +41,24 @@ class Ending():
         '''
 
         self.screen.fill((155, 205, 155))
-        you_lost = self.font.render("You Lost!", True, (0, 0, 0))
-        restart_instructions = self.font.render(
-            "Press space to restart", True, (0, 0, 0))
-        self.screen.blit(you_lost, (150, 150))
-        self.screen.blit(restart_instructions, (90, 200))
+        welcome = self.font.render("Welcome to 2048 :)", True, (0, 0, 0))
+        rules = self.font.render(
+            "Merge the cubes until you reach 2048!", True, (0, 0, 0))
+        start_instructions = self.font.render(
+            "Press enter to start", True, (0, 0, 0))
+        self.screen.blit(welcome, (120, 130))
+        self.screen.blit(rules, (50, 155))
+        self.screen.blit(start_instructions, (120, 210))
 
         pygame.display.update()
 
         while self.run:
             for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
                     self.run = False  
+                    self.grid.run_loop()
                 if event.type == pygame.QUIT:
                     pygame.quit()
 
-ending=Ending()
-ending.game_ends()
+alotus=Start()
+alotus.start()

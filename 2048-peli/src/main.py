@@ -1,6 +1,7 @@
 import sys
 import pygame
 from griddrawing import Grid
+#from start import Start
 
 pygame.init()
 pygame.display.set_caption("2048")
