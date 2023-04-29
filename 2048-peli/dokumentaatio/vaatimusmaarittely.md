@@ -3,15 +3,18 @@
 One player game
 
 ## Perusversion tarjoama toiminnallisuus
+- a starting screen with instructions is made. #tee tää
+- a start grid is made when the game is started. TEHTY
 - Starts off with 2 number 2s in random places on a 4x4 grid. TEHTY
-- The player can merge these cubes into one that becomes double their number.
+- If two cubes of the same value are next to each other, the player can merge these cubes into one cube thats value is double of the two cubes.
 eg. Two 2s become one 4, two 4s become 8 and so on. TEHTY
-- The player can control the grid with arrow keys. TEHTY
-- When the player presses a key, a new 2-cube appears on the grid and the cubes slide onto the side
-of the key and the cubes can merge if same ones are next to each other. TEHTY
+- New 2-cubes will spawn after every move except if the target row/column is full. TEHTY
+- The player can control the the sliding of the cubes with arrow keys. TEHTY
+- The cubes will slide to the furthest possible place on the grid of the chosen direction. TEHTY
 - Cubes should change colours as they keep merging. TEHTY
-- Player loses when the grid is full and no merging can be done anymore
-- Start screen and ending screen exist and work
+- Cube pulses when a merge is done. #tee
+- Player loses when the grid is full and no merging can be done anymore. TEHTY
+- Ending screen with replay instructions is made and works. #tee loppuun
 ## Jatkokehitysideoita
 - High score will be stored
 

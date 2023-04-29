@@ -3,7 +3,8 @@
  classDiagram
       Matrix "*" --> "1" Grid
       Grid "*" --> "1" Main
-      Colours "*" --> "1" Matrix
+      Colours "*" --> "1" Grid
+      Ending "*" --> "1" Grid
       class Grid{
           screen
           colours
