@@ -3,7 +3,7 @@
 ## Aloitus
 Sovellus avautuu aloitusruutuun. 
 
-(laita kuva)
+![](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/Screenshot%202023-04-30%20at%200.24.23.png)
 
 Peliin pääsee painamalla Enter-näppäintä.
 
