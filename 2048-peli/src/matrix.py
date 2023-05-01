@@ -22,14 +22,21 @@ class Matrix:
 
         self.empty_cubes = []
         self.merge_done = [[False for _ in range(4)] for _ in range(4)]
+        self.gridm = [[0 for _ in range(4)] for _ in range(4)]
+        self.initialize_game()
+
+    def initialize_game(self):
+        self.empty_cubes = []
+        print("testi3")
+        self.merge_done = [[False for _ in range(4)] for _ in range(4)]
         self.gridm = [[0, 0, 0, 0],
-                      [0, 0, 0, 0],
-                      [0, 0, 0, 0],
-                      [0, 0, 0, 0]]
-        # self.gridm = [[4, 16, 4, 16],
-        #               [16, 4, 16, 4],
-        #               [4, 16, 4, 16],
-        #               [16, 4, 16, 4]]
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0]]
+        # self.gridm = [[32, 16, 32, 64],
+        #         [256, 8, 2, 4],
+        #         [128, 2048, 8, 16],
+        #         [8, 128, 16, 2]]
         self.starting_cubes()
 
     def starting_cubes(self):
@@ -164,6 +171,7 @@ class Matrix:
         '''
 
         spawn = False
+        moved=False
         for i in range(4):
             for j in range(4):
                 shift = 0
@@ -174,6 +182,7 @@ class Matrix:
                     self.gridm[i][j-shift] = self.gridm[i][j]
                     self.gridm[i][j] = 0
                     spawn = True
+                    moved=True
                 if self.gridm[i][j-shift] == self.gridm[i][j-shift-1] \
                     and not self.merge_done[i][j-shift-1] \
                     and not self.merge_done[i][j-shift]:
@@ -183,7 +192,7 @@ class Matrix:
                     spawn = True
         for i, row in enumerate(self.gridm):
             if row[0] == 0:
-                break
+                self.new_cubes()
         else:
             spawn = False
         if spawn:
@@ -202,7 +211,7 @@ class Matrix:
                 
         '''
         spawn = False
-
+        moved=False
         for i in range(4):
             for j in range(4):
                 shift = 0
@@ -213,6 +222,7 @@ class Matrix:
                     self.gridm[i][3-j+shift] = self.gridm[i][3-j]
                     self.gridm[i][3-j] = 0
                     spawn = True
+                    moved=True
                 if 4-j+shift <= 3:
                     if self.gridm[i][4-j+shift] == self.gridm[i][3-j+shift] \
                             and not self.merge_done[i][4-j+shift] \
@@ -223,10 +233,9 @@ class Matrix:
                         spawn = True
         for i, row in enumerate(self.gridm):
             if row[3] == 0:
-                break
+                self.new_cubes()
         else:
             spawn = False
-
         if spawn:
             self.new_cubes()
 

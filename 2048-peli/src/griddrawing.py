@@ -4,6 +4,7 @@ from matrix import Matrix
 from gamecolours import Colours
 from ending import Ending
 
+
 class Grid:
 
     '''Luokka, joka piirtää ruudukon.
@@ -35,6 +36,7 @@ class Grid:
                 initialize_screen(): piirtää näytön
                 
         '''
+        pygame.init()
         self.matrix = Matrix()
         self.font = pygame.font.SysFont("Comic Sans", 19)
         self.cubes_list = []
@@ -53,7 +55,7 @@ class Grid:
                 draw_cubes: metodi, joka piirtää laatat
                 movement: metodi, joka kuvaa laattojen liikettä
         '''
-        
+        #self.start.start()
         while True:
             self.draw_cubes()
             for event in pygame.event.get():
@@ -71,7 +73,6 @@ class Grid:
         Args: 
                 checker: metodi, joka tarkistaa onko peli päättynyt
         '''
-        
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 self.matrix.movement_left()
@@ -86,12 +87,11 @@ class Grid:
                 self.matrix.movement_down()
                 self.checker()
             if self.game_over:
+                self.ending.run=True
+                self.ending.game_ends()
                 if event.key == pygame.K_SPACE:
-                    self.matrix.gridm = [[0, 0, 0, 0],
-                                         [0, 0, 0, 0],
-                                         [0, 0, 0, 0],
-                                         [0, 0, 0, 0]]
-                    self.matrix.starting_cubes()
+                    self.screen.fill((125, 158, 192))
+                    self.matrix.initialize_game()
                     self.merge_done = [
                         [False for _ in range(4)] for _ in range(4)]
                     self.initialize_screen()
@@ -164,4 +164,4 @@ class Grid:
                     return False
         else:
             self.game_over = True
-            self.ending.game_ends()
+            print("bepeep")

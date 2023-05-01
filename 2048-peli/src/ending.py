@@ -1,4 +1,5 @@
 import pygame
+from matrix import Matrix
 
 
 class Ending():
@@ -27,8 +28,9 @@ class Ending():
         pygame.init()
         self.font = pygame.font.SysFont("Comic Sans", 20)
         self.screen = pygame.display.set_mode((400, 400))
-        self.run=True
-        self.game_ends()
+        self.ended=False
+        self.matrix=Matrix()
+        self.run=False
 
     def game_ends(self):
 
@@ -39,20 +41,30 @@ class Ending():
                     restart_instuctions: aloitusohjeet
                 
         '''
+        # self.run=True
+        # self.screen.fill((155, 205, 155))
+        # you_lost = self.font.render("You Lost!", True, (0, 0, 0))
+        # restart_instructions = self.font.render(
+        #     "Press space to restart", True, (0, 0, 0))
+        # self.screen.blit(you_lost, (150, 150))
+        # self.screen.blit(restart_instructions, (90, 200))
 
-        self.screen.fill((155, 205, 155))
-        you_lost = self.font.render("You Lost!", True, (0, 0, 0))
-        restart_instructions = self.font.render(
-            "Press space to restart", True, (0, 0, 0))
-        self.screen.blit(you_lost, (150, 150))
-        self.screen.blit(restart_instructions, (90, 200))
-
-        pygame.display.update()
 
         while self.run:
+            self.screen.fill((155, 205, 155))
+            you_lost = self.font.render("You Lost!", True, (0, 0, 0))
+            restart_instructions = self.font.render(
+                "Press space to restart", True, (0, 0, 0))
+            self.screen.blit(you_lost, (150, 150))
+            self.screen.blit(restart_instructions, (90, 200))
+            pygame.display.update()
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                    self.run = False  
+                    self.run = False
+                    self.ended=True
+                    self.screen.fill((125, 158, 192))
+                    self.matrix.initialize_game()
+                    pygame.display.update()
                 if event.type == pygame.QUIT:
                     pygame.quit()
 

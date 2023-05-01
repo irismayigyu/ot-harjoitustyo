@@ -1,8 +1,11 @@
 import pygame
 from griddrawing import Grid
+from matrix import Matrix
+
+
 class Start():
 
-    '''Luokka, joka luo pelin päättymisnäytön
+    '''Luokka, joka luo pelin aloitusnäytön
 
     Kertoo pelaajalle, että hän on hävinnyt sekä miten tämä voi aloittaa uuden pelin
 
@@ -26,9 +29,9 @@ class Start():
         pygame.init()
         self.font = pygame.font.SysFont("Comic Sans", 16)
         self.screen = pygame.display.set_mode((400, 400))
-        self.run=True
+        self.start_run=True
+        self.matrix=Matrix()
         self.grid=Grid(self.screen)
-        self.start()
 
     def start(self):
 
@@ -52,10 +55,12 @@ class Start():
 
         pygame.display.update()
 
-        while self.run:
+        while self.start_run:
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-                    self.run = False  
+                    self.start_run = False
+                    self.screen.fill((125, 158, 192))
+                    self.matrix.initialize_game()
                     self.grid.run_loop()
                 if event.type == pygame.QUIT:
                     pygame.quit()
