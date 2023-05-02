@@ -1,9 +1,10 @@
 import random
 
+
 class Matrix:
 
     '''Luokka, joka kuvaa ruudukon toimintaa
-        
+
         Attributes: 
                     empty_cubes: lista kuvaa tyhjiä paikkoja ruudukossa
                     merge_done: lista kertoo onko jo jossain kohdassa tehty yhdistäminen
@@ -11,9 +12,8 @@ class Matrix:
     '''
 
     def __init__(self):
-
         '''Luokan konstruktori, joka alustaa ruudukon 
-        
+
         Args: 
                     empty_cubes: lista kuvaa tyhjiä paikkoja ruudukossa
                     merge_done: lista kertoo onko jo jossain kohdassa tehty yhdistäminen
@@ -27,26 +27,25 @@ class Matrix:
 
     def initialize_game(self):
         self.empty_cubes = []
-        print("testi3")
         self.merge_done = [[False for _ in range(4)] for _ in range(4)]
         self.gridm = [[0, 0, 0, 0],
-                        [0, 0, 0, 0],
-                        [0, 0, 0, 0],
-                        [0, 0, 0, 0]]
-        # self.gridm = [[32, 16, 32, 64],
+                      [0, 0, 0, 0],
+                      [0, 0, 0, 0],
+                      [0, 0, 0, 0]]
+        # self.gridm = [[32, 16, 32, 64], #pelin päättymisent testausta varten
         #         [256, 8, 2, 4],
         #         [128, 2048, 8, 16],
         #         [8, 128, 16, 2]]
         self.starting_cubes()
 
-    def starting_cubes(self):
 
+    def starting_cubes(self):
         '''Luokan metodi, joka asettaa kaksi aloituslaattaa satunnaisille paikoille
-        
+
         Args: 
                 start1: ensimmäinen laatta
                 start2: toinen laatta
-                
+
         '''
 
         start1 = (random.choice(range(0, 4)), random.choice(range(0, 4)))
@@ -56,14 +55,14 @@ class Matrix:
                       random.choice(range(0, 4)))
         self.gridm[start1[0]][start1[1]] = 2
         self.gridm[start2[0]][start2[1]] = 2
+        return (start1, start2)  # testejä varten
 
     def new_cubes(self):
-
         '''Luokan metodi, joka luo uuden laatan satunnaiselle paikalla
-        
+
         Args: 
                 value: laatan arvo, joka on 90% ajasta 2 ja loput 4
-                
+
         '''
 
         self.empty_cubes = []
@@ -81,17 +80,15 @@ class Matrix:
             self.empty_cubes.remove(new_cube)
             self.merge_done = [[False for _ in range(4)] for _ in range(4)]
 
-
     def movement_up(self):  # ylöspäin mergeäminen ei aina toimi
-
         '''Luokan metodi, joka määrittää liikkeen ylöspäin.
 
         Tarkistaa onko laatan yläpuolella tilaa tai onko yläpuolella olevalla laatalla sama arvo.
         Sitten siirtää ja/tai tekee yhdistyksen. Kutsuu uuden laatan luontia.
-        
+
         Args: 
                 spawn: kun on aihetta luoda uusi laatta
-                
+
         '''
 
         spawn = False
@@ -121,15 +118,14 @@ class Matrix:
             self.new_cubes()
 
     def movement_down(self):
-
         '''Luokan metodi, joka määrittää liikkeen alaspäin.
 
         Tarkistaa onko laatan yläpuolella tilaa tai onko yläpuolella olevalla laatalla sama arvo.
         Sitten siirtää ja/tai tekee yhdistyksen. Kutsuu uuden laatan luontia.
-        
+
         Args: 
                 spawn: kun on aihetta luoda uusi laatta
-                
+
         '''
         spawn = False
         for j in range(4):
@@ -158,20 +154,18 @@ class Matrix:
         if spawn:
             self.new_cubes()
 
-    def movement_left(self): #cubes should spawn if moves are made..
-
+    def movement_left(self):  # cubes should spawn if moves are made.. sometimes spawns too much..
         '''Luokan metodi, joka määrittää liikkeen vasemmalle.
 
         Tarkistaa onko laatan yläpuolella tilaa tai onko yläpuolella olevalla laatalla sama arvo.
         Sitten siirtää ja/tai tekee yhdistyksen. Kutsuu uuden laatan luontia.
-        
+
         Args: 
                 spawn: kun on aihetta luoda uusi laatta
-                
+
         '''
 
         spawn = False
-        moved=False
         for i in range(4):
             for j in range(4):
                 shift = 0
@@ -182,10 +176,9 @@ class Matrix:
                     self.gridm[i][j-shift] = self.gridm[i][j]
                     self.gridm[i][j] = 0
                     spawn = True
-                    moved=True
                 if self.gridm[i][j-shift] == self.gridm[i][j-shift-1] \
-                    and not self.merge_done[i][j-shift-1] \
-                    and not self.merge_done[i][j-shift]:
+                        and not self.merge_done[i][j-shift-1] \
+                        and not self.merge_done[i][j-shift]:
                     self.gridm[i][j-shift-1] *= 2
                     self.gridm[i][j-shift] = 0
                     self.merge_done[i][j-shift-1] = True
@@ -200,18 +193,17 @@ class Matrix:
 
     # kulmien mergeeminen ei toimi joskus. left and right merging also does not work everytime.
     def movement_right(self):
-
         '''Luokan metodi, joka määrittää liikkeen oikealle.
 
         Tarkistaa onko laatan yläpuolella tilaa tai onko yläpuolella olevalla laatalla sama arvo.
         Sitten siirtää ja/tai tekee yhdistyksen. Kutsuu uuden laatan luontia.
-        
+
         Args: 
                 spawn: kun on aihetta luoda uusi laatta
-                
+
         '''
         spawn = False
-        moved=False
+
         for i in range(4):
             for j in range(4):
                 shift = 0
@@ -222,7 +214,7 @@ class Matrix:
                     self.gridm[i][3-j+shift] = self.gridm[i][3-j]
                     self.gridm[i][3-j] = 0
                     spawn = True
-                    moved=True
+
                 if 4-j+shift <= 3:
                     if self.gridm[i][4-j+shift] == self.gridm[i][3-j+shift] \
                             and not self.merge_done[i][4-j+shift] \
@@ -239,3 +231,5 @@ class Matrix:
         if spawn:
             self.new_cubes()
 
+me=Matrix()
+print(me.initialize_game())

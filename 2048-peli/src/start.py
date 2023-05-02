@@ -13,34 +13,33 @@ class Start():
                 font: fontti
                 screen: näyttö
                 game_ends: luo ja piirtää päättymisnäytön
-            
-    '''
-        
-    def __init__(self):
 
-        '''Luokan konstruktori, joka alustaa lopetuksen
+    '''
+
+    def __init__(self):
+        '''Luokan konstruktori, joka alustaa aloituksen
 
         Args:
                     font: fontti
                     screen: näyttö
-                    game_ends: luo päättymisnäytön
-                
+                    start_run: pitää aloitusnäyttöä yllä kunnes pelaaja painaa entteriä
+
         '''
         pygame.init()
         self.font = pygame.font.SysFont("Comic Sans", 16)
         self.screen = pygame.display.set_mode((400, 400))
-        self.start_run=True
-        self.matrix=Matrix()
-        self.grid=Grid(self.screen)
+        self.start_run = True
+        self.matrix = Matrix()
+        self.grid = Grid(self.screen)
 
     def start(self):
-
-        '''Luokan metodi, joka luo ja piirtää päättysmisnäytön
+        '''Luokan metodi, joka luo ja piirtää aloitusnäytön
 
         Args:
-                    you_lost: häviämisteksti
-                    restart_instuctions: aloitusohjeet
-                
+                    welcome: tervetulon-toivotukset
+                    rules: ohjeet
+                    start_instuctions: aloitusohjeet
+
         '''
 
         self.screen.fill((155, 205, 155))
@@ -65,5 +64,6 @@ class Start():
                 if event.type == pygame.QUIT:
                     pygame.quit()
 
-alotus=Start()
-alotus.start()
+
+start = Start()
+start.start()

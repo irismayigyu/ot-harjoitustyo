@@ -16,5 +16,7 @@
 | 27.4. | 3h   | toiminnallisuutta ja värit ja lopetus|
 | 28.4. | 3h   | debuggausta, toiminnallisuutta|
 | 29.4. | 7h   | docstring, toiminnallisuutta|
+| 30.4. | 3h   | rakennetta, riippuvaisuuksia, toiminnallisuutta|
+| 2.4. | 3h   | rakennetta, riippuvaisuuksia|
 
-summa: 36h
+summa: 42h

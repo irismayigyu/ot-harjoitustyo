@@ -2,9 +2,12 @@
 ```mermaid
  classDiagram
       Matrix "*" --> "1" Grid
-      Grid "*" --> "1" Main
       Colours "*" --> "1" Grid
       Ending "*" --> "1" Grid
+      Main "*" --> "1" Start
+      Grid "*" --> "1" Start
+      Matrix "*" --> "1" Start
+      Matrix "*" --> "1" Ending
       class Grid{
           screen
           colours

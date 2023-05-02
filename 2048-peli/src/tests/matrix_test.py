@@ -1,3 +1,4 @@
+
 import unittest
 from matrix import Matrix
 
@@ -6,10 +7,14 @@ class TestMatrix(unittest.TestCase):
     def setUp(self):
         self.matrix = Matrix()
 
-    def test_start1_and_start2_are_always_different(self): #change this
+    def test_start1_and_start2_are_always_different(self):
         tuple = self.matrix.starting_cubes()
         self.assertEqual(tuple[0] !=
                          tuple[1], True)
+
+    # def test_initializing_matrix(self):
+    #     lista=self.matrix.initialize_game()
+    #     self.assertEqual(sum(lista) > 8, True)
 
     def test_if_movement_up_works(self):
         self.matrix.starting_cubes()

@@ -17,3 +17,4 @@
 - lisätty ja korjailtu liikkumisen ja yhdistämisen logiikkaa
 - ending screen luotu
 - värit luotu
+- starting screen luotu ja toimii

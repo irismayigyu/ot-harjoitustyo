@@ -8,7 +8,7 @@ from ending import Ending
 class Grid:
 
     '''Luokka, joka piirtää ruudukon.
-        
+
         Attributes: 
                 matrix: Matrix-luokan olio
                 font: fontti
@@ -18,13 +18,12 @@ class Grid:
                 game_over: tarkistaa onko peli ohi
                 ending: Ending-luokan olio
                 initialize_screen(): piirtää näytön
-                
+
     '''
 
     def __init__(self, screen):
-
         '''Luokan konstruktori, joka alustaa luokan argumentit.
-        
+
         Args: 
                 matrix: Matrix-luokan olio
                 font: fontti
@@ -34,7 +33,7 @@ class Grid:
                 game_over: tarkistaa onko peli ohi
                 ending: Ending-luokan olio
                 initialize_screen(): piirtää näytön
-                
+
         '''
         pygame.init()
         self.matrix = Matrix()
@@ -46,16 +45,14 @@ class Grid:
         self.ending = Ending()
         self.initialize_screen()
 
-
     def run_loop(self):
-
         '''Luokan metodi, joka kutsuu draw-cubes- ja movement-metodeja. Sulkee pelin tarvittaessa.
 
         Args: 
                 draw_cubes: metodi, joka piirtää laatat
                 movement: metodi, joka kuvaa laattojen liikettä
         '''
-        #self.start.start()
+        # self.start.start()
         while True:
             self.draw_cubes()
             for event in pygame.event.get():
@@ -65,11 +62,10 @@ class Grid:
                     self.movement(event)
 
     def movement(self, event):
-
         '''Luokan metodi, kuvaa laattojen liikkumista graaffisesti. 
         Nuolinäppäinten käyttö kutsuu Matrix-olion movement-metodeja. Jos peli on ohi
         ja painetaan välilyöntiä niin se alkaa uudestaan
-        
+
         Args: 
                 checker: metodi, joka tarkistaa onko peli päättynyt
         '''
@@ -87,26 +83,26 @@ class Grid:
                 self.matrix.movement_down()
                 self.checker()
             if self.game_over:
-                self.ending.run=True
+                self.ending.run = True
                 self.ending.game_ends()
                 if event.key == pygame.K_SPACE:
-                    self.screen.fill((125, 158, 192))
-                    self.matrix.initialize_game()
-                    self.merge_done = [
-                        [False for _ in range(4)] for _ in range(4)]
-                    self.initialize_screen()
+                    pass
+                    # self.screen.fill((125, 158, 192))
+                    # print("testi gridin haku")
+                    # self.matrix.initialize_game()
+                    # # self.merge_done = [
+                    # #     [False for _ in range(4)] for _ in range(4)]
+                    # # # self.initialize_screen()
 
     def initialize_screen(self):
-
         '''Luokan metodi, joka alustaa näytön
 
         '''
-        
+
         self.screen.fill((125, 158, 192))
         pygame.display.update()
 
-    def draw_cubes(self):  # piirtääks tää koko ajan (piirtää endingnäytön päälle..)
-
+    def draw_cubes(self):
         '''Luokan metodi, piirtää laatat ja kirjaa niihin niiden arvot.
 
         Args: 
@@ -142,15 +138,14 @@ class Grid:
         pygame.display.update()
 
     def checker(self):
-
         '''Luokan metodi, joka tarkistaa onko peli päättynyt.
 
         Jos peli on päättynyt, kutsuu Ending-luokan metodia.
 
         Args: 
-                ending.game_ends: piirtää uuden näytön, jossa ohjeet aloittaa peli uudestaan
+                game_over: boolean-kertoo kun peli on ohi
         '''
-        
+
         for i in self.matrix.gridm:
             if 0 in i:
                 return False
@@ -162,6 +157,5 @@ class Grid:
             for j in range(3):
                 if self.matrix.gridm[j][i] == self.matrix.gridm[j+1][i]:
                     return False
-        else:
-            self.game_over = True
-            print("bepeep")
+
+        self.game_over = True

@@ -5,15 +5,15 @@ class Colours:
 
     Argumentit:
                 colours: sanakirja, jossa laatan arvo vastaa jotain väriä
-            
-    '''
-    def __init__(self):
 
+    '''
+
+    def __init__(self):
         '''Luokan konstruktori, joka sisältää värisanakirjan
 
         Args:
                 colours: sanakirja, jossa laatan arvo vastaa jotain väriä
-                
+
         '''
         self.colours = {2: (255, 182, 193),
                         4: (255, 160, 122),
