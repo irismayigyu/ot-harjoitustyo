@@ -1,5 +1,5 @@
 import random
-
+from ending import Ending
 
 class Matrix:
 
@@ -22,7 +22,9 @@ class Matrix:
 
         self.empty_cubes = []
         self.merge_done = [[False for _ in range(4)] for _ in range(4)]
-        self.gridm = [[0 for _ in range(4)] for _ in range(4)]
+        self.ending=Ending()
+        self.gridm=self.ending.gridm
+        # self.gridm = [[0 for _ in range(4)] for _ in range(4)]
         self.initialize_game()
 
     def initialize_game(self):

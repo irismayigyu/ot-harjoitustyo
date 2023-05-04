@@ -1,7 +1,4 @@
 import pygame
-from matrix import Matrix
-
-
 class Ending():
 
     '''Luokka, joka luo pelin päättymisnäytön
@@ -28,7 +25,10 @@ class Ending():
         pygame.init()
         self.font = pygame.font.SysFont("Comic Sans", 20)
         self.screen = pygame.display.set_mode((400, 400))
-        self.matrix = Matrix()
+        self.gridm = [[0, 0, 0, 0],
+                      [0, 0, 0, 0],
+                      [0, 0, 0, 0],
+                      [0, 0, 0, 0]]
         self.run = True
 
     def game_ends(self):
@@ -52,8 +52,10 @@ class Ending():
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                     self.run = False
-                    # self.testi=False
-                    self.matrix.initialize_game()  # miksi ei toimi??!!!!!s
+                    self.gridm = [[0, 0, 0, 0],
+                      [0, 0, 0, 0],
+                      [0, 0, 0, 0],
+                      [0, 0, 0, 0]]
                     print("haloo")
                     self.screen.fill((125, 158, 192))
                     pygame.display.update()
