@@ -28,16 +28,15 @@ class Matrix:
     def initialize_game(self):
         self.empty_cubes = []
         self.merge_done = [[False for _ in range(4)] for _ in range(4)]
-        self.gridm = [[0, 0, 0, 0],
-                      [0, 0, 0, 0],
-                      [0, 0, 0, 0],
-                      [0, 0, 0, 0]]
-        # self.gridm = [[32, 16, 32, 64], #pelin päättymisent testausta varten
-        #         [256, 8, 2, 4],
-        #         [128, 2048, 8, 16],
-        #         [8, 128, 16, 2]]
+        # self.gridm = [[0, 0, 0, 0],
+        #               [0, 0, 0, 0],
+        #               [0, 0, 0, 0],
+        #               [0, 0, 0, 0]]
+        self.gridm = [[32, 16, 32, 64], #pelin päättymisen testausta varten
+                [256, 8, 2, 4],
+                [128, 2048, 8, 16],
+                [8, 128, 16, 2]]
         self.starting_cubes()
-
 
     def starting_cubes(self):
         '''Luokan metodi, joka asettaa kaksi aloituslaattaa satunnaisille paikoille
@@ -154,82 +153,76 @@ class Matrix:
         if spawn:
             self.new_cubes()
 
-    def movement_left(self):  # cubes should spawn if moves are made.. sometimes spawns too much..
+    def movement_left(self):
         '''Luokan metodi, joka määrittää liikkeen vasemmalle.
 
-        Tarkistaa onko laatan yläpuolella tilaa tai onko yläpuolella olevalla laatalla sama arvo.
+        Tarkistaa onko laatan vasemmalla puolella tilaa 
+        tai onko vasemmalla puolella olevalla laatalla sama arvo.
         Sitten siirtää ja/tai tekee yhdistyksen. Kutsuu uuden laatan luontia.
 
         Args: 
                 spawn: kun on aihetta luoda uusi laatta
-
         '''
 
         spawn = False
         for i in range(4):
             for j in range(4):
-                shift = 0
-                for zed in range(j):
-                    if self.gridm[i][zed] == 0:
-                        shift += 1
-                if shift > 0:
-                    self.gridm[i][j-shift] = self.gridm[i][j]
-                    self.gridm[i][j] = 0
-                    spawn = True
-                if self.gridm[i][j-shift] == self.gridm[i][j-shift-1] \
-                        and not self.merge_done[i][j-shift-1] \
-                        and not self.merge_done[i][j-shift]:
-                    self.gridm[i][j-shift-1] *= 2
-                    self.gridm[i][j-shift] = 0
-                    self.merge_done[i][j-shift-1] = True
-                    spawn = True
-        for i, row in enumerate(self.gridm):
-            if row[0] == 0:
-                self.new_cubes()
+                if self.gridm[i][j] != 0:
+                    k = j
+                    while k > 0 and (self.gridm[i][k-1] == 0
+                                     or self.gridm[i][k-1] == self.gridm[i][j]):
+                        k -= 1
+                    if k != j:
+                        if self.gridm[i][k] == self.gridm[i][j] \
+                                and not self.merge_done[i][k] and not self.merge_done[i][j]:
+                            self.gridm[i][k] *= 2
+                            self.gridm[i][j] = 0
+                            self.merge_done[i][k] = True
+                        else:
+                            self.gridm[i][k] = self.gridm[i][j]
+                            self.gridm[i][j] = 0
+                        spawn = True
+        if 0 in [row[3] for row in self.gridm]:
+            pass
         else:
             spawn = False
-        if spawn:
-            self.new_cubes()
+        self.new_cubes() if spawn else None
 
-    # kulmien mergeeminen ei toimi joskus. left and right merging also does not work everytime.
     def movement_right(self):
         '''Luokan metodi, joka määrittää liikkeen oikealle.
 
-        Tarkistaa onko laatan yläpuolella tilaa tai onko yläpuolella olevalla laatalla sama arvo.
+        Tarkistaa onko laatan oikealla puolella tilaa 
+        tai onko oikealla puolella olevalla laatalla sama arvo.
         Sitten siirtää ja/tai tekee yhdistyksen. Kutsuu uuden laatan luontia.
 
         Args: 
                 spawn: kun on aihetta luoda uusi laatta
 
         '''
+
         spawn = False
-
         for i in range(4):
-            for j in range(4):
-                shift = 0
-                for zed in range(j):
-                    if self.gridm[i][3-zed] == 0:
-                        shift += 1
-                if shift > 0:
-                    self.gridm[i][3-j+shift] = self.gridm[i][3-j]
-                    self.gridm[i][3-j] = 0
-                    spawn = True
-
-                if 4-j+shift <= 3:
-                    if self.gridm[i][4-j+shift] == self.gridm[i][3-j+shift] \
-                            and not self.merge_done[i][4-j+shift] \
-                            and not self.merge_done[i][3-j+shift]:
-                        self.gridm[i][4-j+shift] *= 2
-                        self.merge_done[i][4-j+shift] = True
-                        self.gridm[i][3-j+shift] = 0
+            for j in range(3, -1, -1):
+                if self.gridm[i][j] != 0:
+                    k = j
+                    while k < 3 and (self.gridm[i][k+1] == 0 or self.gridm[i][k+1] == self.gridm[i][j]):
+                        k += 1
+                    if k != j:
+                        if self.gridm[i][k] == self.gridm[i][j] \
+                            and not self.merge_done[i][k] and not self.merge_done[i][j]:
+                            self.gridm[i][k] *= 2
+                            self.gridm[i][j] = 0
+                            self.merge_done[i][k] = True
+                        else:
+                            self.gridm[i][k] = self.gridm[i][j]
+                            self.gridm[i][j] = 0
                         spawn = True
-        for i, row in enumerate(self.gridm):
-            if row[3] == 0:
-                self.new_cubes()
+        if 0 in [row[0] for row in self.gridm]:
+            pass
         else:
             spawn = False
-        if spawn:
-            self.new_cubes()
+        self.new_cubes() if spawn else None
 
-me=Matrix()
-print(me.initialize_game())
+
+# me=Matrix()
+# print(me.initialize_game())

@@ -52,7 +52,6 @@ class Grid:
                 draw_cubes: metodi, joka piirtää laatat
                 movement: metodi, joka kuvaa laattojen liikettä
         '''
-        # self.start.start()
         while True:
             self.draw_cubes()
             for event in pygame.event.get():
@@ -85,7 +84,7 @@ class Grid:
             if self.game_over:
                 self.ending.run = True
                 self.ending.game_ends()
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE:  # koodi ei enää tuu takasin tänne...
                     pass
                     # self.screen.fill((125, 158, 192))
                     # print("testi gridin haku")

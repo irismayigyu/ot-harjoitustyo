@@ -16,7 +16,11 @@ clock.tick(FPS)
 class Main:
     def __init__(self):
         self.start = Start()
-        self.start.start()
+    #     self.start_game()
+
+    # def start_game(self):
+    #     while True:
+    #         self.start.start()
 
 
 def quit_game():
