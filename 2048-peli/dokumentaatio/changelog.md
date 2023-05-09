@@ -1,20 +1,24 @@
 # Changelog
 ## Viikko 3
-- ruudukko luotu
-- kahden satunnaisen ruudun ilmaantuminen ruudukkoon. ruuduissa lukee "2"
+- Ruudukko näkyy käyttäjälle
+- Kaksi satunnaista laattaa luodaann ruudukkoon. Ruutujen arvo on 2
 
 ## Viikko 4
-- huomattavia muutoksia rakenteeseen
-- ruutujen liikkeiden logiikka ja yhdistäminen luotu
-- eli pelin pääpiirteet pääosin valmiita loogisella tasolla (ei visuaalisesti)
+- Laattojen liikkeiden logiikka ja yhdistäminen luotu
+- Matrix-luokka luotu
+- Pelin pääpiirteet pääosin valmiita loogisella tasolla
 
 ## Viikko 5
-- ruutujen liikkeiden logiikka ja yhdistäminen korjailtu
-- pelin pääpiirteet pääosin valmiita visuaalisellakin tasolla
-- liikkeet ja yhdistäminen toimivat
+- Pelaaja voi yhdistää laattoja
+- Laattojen liikkeiden logiikka ja yhdistäminen korjailtu
+- Pelin pääpiirteet pääosin valmiita visuaalisellakin tasolla
 
 ## Viikko 6
-- lisätty ja korjailtu liikkumisen ja yhdistämisen logiikkaa
-- ending screen luotu
-- värit luotu
-- starting screen luotu ja toimii
+- Kehitetty ja korjailtu liikkumisen ja yhdistämisen logiikkaa
+- Ending- ja Start-luokat luotu
+- Värit-luokka luotu
+
+## Viikko 7
+- Pelaaja pääsee aloitysnäkymään, siitä pelinäkymään ja siitä lopetusnäkymään
+- Viimeistelty liikkumisen ja yhdistämisen logiikkaa
+- Score toimii ja HighScore-luokka luotu

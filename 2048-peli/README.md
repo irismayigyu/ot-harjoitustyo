@@ -1,11 +1,14 @@
 # 2048
 
+Laita tähän linkki release kakkoseen ja viimeiseen.
 
 [Release 1](https://github.com/irismayigyu/ot-harjoitustyo/releases/tag/viikko5)
 
-Pieni retro pastelliversio pelistä 2048. Pelissä yhdistellään 4x4 ruudukon laattoja keskenään käyttäen nuolinäppäimiä. Tavoite on päästä lukuun 2048. 
+Pieni retro pastelliversio yksinpeli [2048:stä](https://en.wikipedia.org/wiki/2048_(video_game)) käyttäen pygame-kirjastoa. Pelissä yhdistellään 4x4 ruudukon laattoja keskenään käyttäen nuolinäppäimiä. Tavoite on päästä lukuun 2048. 
 
-[2048-wikipediasivu](https://en.wikipedia.org/wiki/2048_(video_game))
+## Python-versio
+
+Sovelluksen toimintaa testattu Python-versiolla `3.8`. On siis mahdollista että varsinkin vanhempien Python-versioiden kanssa esiintyy ongelmia. 
 
 ## Dokumentaatio
 
@@ -35,7 +38,7 @@ poetry run invoke start
 
 ### Ohjelman suorittaminen
 
-Ohjelman pystyy suorittamaan komennolla:
+Ohjelman voi suorittaa komennolla:
 
 ```bash
 poetry run invoke start
@@ -43,7 +46,7 @@ poetry run invoke start
 
 ### Testaus
 
-Testit suorittaminen komennolla:
+Testien suorittaminen onnistuu komennolla:
 
 ```bash
 poetry run invoke test

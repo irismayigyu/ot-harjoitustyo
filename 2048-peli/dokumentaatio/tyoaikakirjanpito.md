@@ -17,6 +17,9 @@
 | 28.4. | 3h   | debuggausta, toiminnallisuutta|
 | 29.4. | 7h   | docstring, toiminnallisuutta|
 | 30.4. | 3h   | rakennetta, riippuvaisuuksia, toiminnallisuutta|
-| 2.4. | 3h   | rakennetta, riippuvaisuuksia|
+| 2.4. | 3h   | rakennetta, riippuvaisuuksia, arkkitehtuuria|
+| 4.4. | 3h   | riippuvaisuuksia ja toiminnallisuutta|
+| 5.4. | 6h   | riippuvaisuuksia ja toiminnallisuutta, score ja highscore|
+| 5.4. | 3h   | dokumentontia, arkkitehtuuria, testejä|
 
-summa: 42h
+yht: 54h

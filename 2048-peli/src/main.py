@@ -1,27 +1,31 @@
 
 import sys
 import pygame
-from start import Start
+from ui.start import Start
 
 
-pygame.init()
-pygame.display.set_caption("2048")
-# screen = pygame.display.set_mode((400, 400))
-clock = pygame.time.Clock()
+def gameloop():
+    '''Funktio, joka kutsuu pelin alkua
 
-FPS = 60
-clock.tick(FPS)
+    Args:
+            clock: aika
+            fps: frames-per-second
+            start: Start-luokan olio
+            start_loop: Start-luokan metodi
 
-
-class Main:
-    def __init__(self):
-        self.start = Start()
-    #     self.start_game()
-
-    # def start_game(self):
-    #     while True:
-    #         self.start.start()
+    '''
+    pygame.init()
+    pygame.display.set_caption("2048")
+    clock = pygame.time.Clock()
+    fps = 60
+    clock.tick(fps)
+    start = Start()
+    start.start_loop()
 
 
 def quit_game():
     sys.exit()
+
+
+if __name__ == "__main__":
+    gameloop()

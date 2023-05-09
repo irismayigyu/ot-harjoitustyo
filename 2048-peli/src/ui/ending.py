@@ -1,4 +1,6 @@
 import pygame
+
+
 class Ending():
 
     '''Luokka, joka luo pelin päättymisnäytön
@@ -18,20 +20,15 @@ class Ending():
         Args:
                     font: fontti
                     screen: näyttö
-                    game_ends: luo päättymisnäytön
-                    run: pitää lopetusnäyttöä yllä kunnes pelaaja painaa välilyöntiä
+                    run: pitää lopetusnäyttöä yllä kunnes peslaaja painaa välilyöntiä
 
         '''
         pygame.init()
         self.font = pygame.font.SysFont("Comic Sans", 20)
-        self.screen = pygame.display.set_mode((400, 400))
-        self.gridm = [[0, 0, 0, 0],
-                      [0, 0, 0, 0],
-                      [0, 0, 0, 0],
-                      [0, 0, 0, 0]]
+        self.screen = pygame.display.set_mode((500, 400))
         self.run = True
 
-    def game_ends(self):
+    def game_ends(self, ending_matrix):
         '''Luokan metodi, joka luo ja piirtää päättysmisnäytön
 
         Args:
@@ -41,23 +38,18 @@ class Ending():
         '''
 
         while self.run:
-            # self.testi=True
             self.screen.fill((155, 205, 155))
             you_lost = self.font.render("You Lost!", True, (0, 0, 0))
             restart_instructions = self.font.render(
                 "Press space to restart", True, (0, 0, 0))
-            self.screen.blit(you_lost, (150, 150))
-            self.screen.blit(restart_instructions, (90, 200))
+            self.screen.blit(you_lost, (200, 160))
+            self.screen.blit(restart_instructions, (140, 210))
             pygame.display.update()
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                     self.run = False
-                    self.gridm = [[0, 0, 0, 0],
-                      [0, 0, 0, 0],
-                      [0, 0, 0, 0],
-                      [0, 0, 0, 0]]
-                    print("haloo")
+                    ending_matrix = [[0 for _ in range(4)] for _ in range(4)]
                     self.screen.fill((125, 158, 192))
-                    pygame.display.update()
+                    return ending_matrix
                 if event.type == pygame.QUIT:
                     pygame.quit()

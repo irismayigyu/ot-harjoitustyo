@@ -2,19 +2,39 @@
 ## Sovelluksen tarkoitus
 One player game
 
-## Perusversion tarjoama toiminnallisuus
-- a starting screen with instructions is made. #tee tää
-- a start grid is made when the game is started. TEHTY
-- Starts off with 2 number 2s in random places on a 4x4 grid. TEHTY
-- If two cubes of the same value are next to each other, the player can merge these cubes into one cube thats value is double of the two cubes.
-eg. Two 2s become one 4, two 4s become 8 and so on. TEHTY
-- New 2-cubes will spawn after every move except if the target row/column is full. TEHTY
-- The player can control the the sliding of the cubes with arrow keys. TEHTY
-- The cubes will slide to the furthest possible place on the grid of the chosen direction. TEHTY
-- Cubes should change colours as they keep merging. TEHTY
-- Cube pulses when a merge is done. #tee
-- Player loses when the grid is full and no merging can be done anymore. TEHTY
-- Ending screen with replay instructions is made and works. #tee loppuun
-## Jatkokehitysideoita
-- High score will be stored
+# Vaatimusmäärittely
 
+## Sovelluksen tarkoitus
+
+Sovellus on vuoropohjainen viihdetarkoitukseen oleva peli, jossa käytetään nuolinäppäimiä saavuttaakseen luvun 2048. 
+
+## Käyttäjät
+
+Sovelluksella on ainoastaan yksi käyttäjärooli eli pelaaja.
+
+## Käyttöliittymäluonnos
+
+Sovellus koostuu kolmesta eri näkymästä
+
+laita tähän piirros havainnollistamaan.
+
+Sovellus aukeaa aloitusnäkymään, josta on mahdollista siirtyä pelivaiheeseen. Kun pelaaja häviää niin sovellus avaa lopetusnäkymän, josta pääsee takaisin pelivaiheeseen painamalla välilyönti-näppäintä.
+
+## Perusversion tarjoama toiminnallisuus
+
+### Ennen pelin alkamista
+
+- Aloitusnäkymä aukeaa kun ohjelma käynnistetään. 
+
+### Pelin alkamisen jälkeen
+- Kun peli alkaa, aloitusruudukko, jossa on kaksi aloituslaattaa satunnaisilla paikoilla, on luotu.
+- Jos kaksi laattaa, joilla on sama arvo ovat samalla rivillä/kolumnilla, ilman että välissä on muita laattoja, pelaaja voi yhdistää nämä yhdeksi laataksi, jonka arvo on kaksi kertaa isompi. Jokaisella pelissä mahdollisella arvolla on oma värinsä.
+- Riippuen siitä mitä näppäintä pelaaja painaa, ruudut liikkuvat näppäimen suuntaan mahdollisimman reunalle ruudukkoa.
+- Yhdistymisen ja liikkumisen jälkeen ruudukkoon luodaan uusi laatta satunnaiselle paikalle. Laatan arvo on yleensä 2, mutta 1/10 ajasta se on 4. Jos pelaaja painaa nuolinäppäimiä, mutta ruudukossa ei tapahdu liikettä niin uutta laattaa ei luoda.
+- Peli laskee pelaajan scorea sekä osaa tallettaa highscoren.
+- Pelaaja häviää kun ruudukko on täynnä eikä yhdistämisiä voi enää tehdä.
+- Lopetusnäkymä avautuu pelaajan hävittyä ja siitä takaisin peliin pääsee painalla välilyöntiä.
+
+## Jatkokehitysideoita
+- Player can choose between light mode and dark mode grids.
+- Cube pulses when a merge is done. 
