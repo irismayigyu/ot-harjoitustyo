@@ -2,7 +2,7 @@
 import pygame
 from gamecolours import Colours
 from ui.ending import Ending
-from handle_highscore import HandleHighscore
+from data.handle_highscore import HandleHighscore
 
 
 class Grid:
@@ -171,7 +171,7 @@ class Grid:
 
         pygame.display.update()
 
-    def checker(self):
+    def checker(self): #matrix
         '''Luokan metodi, joka tarkistaa onko peli päättynyt.
 
         Jos peli on päättynyt, kutsuu Ending-luokan metodia.
