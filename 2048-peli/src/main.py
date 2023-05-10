@@ -4,7 +4,7 @@ import pygame
 from ui.start import Start
 
 
-def gameloop():
+def init():
     '''Funktio, joka kutsuu pelin alkua
 
     Args:
@@ -28,4 +28,4 @@ def quit_game():
 
 
 if __name__ == "__main__":
-    gameloop()
+    init()

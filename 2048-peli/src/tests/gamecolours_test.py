@@ -7,4 +7,4 @@ class TestColours(unittest.TestCase):
         self.colour = Colours()
 
     def test_if_colours_work_correctly(self):
-        self.assertEqual(self.colour.colours[4] == (255, 160, 122), True)
+        self.assertEqual(self.colour.colours_light[4] == (255, 160, 122), True)

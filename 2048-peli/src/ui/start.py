@@ -1,6 +1,6 @@
 import pygame
-from grid import Grid
-from matrix import Matrix
+from ui.grid import Grid
+from services.matrix import Matrix
 
 
 class Start():
@@ -29,7 +29,7 @@ class Start():
                 grid: Grid-luokan olio
 
         '''
-        pygame.init()
+        #pygame.init()
         self.font = pygame.font.SysFont("Comic Sans", 16)
         self.screen = pygame.display.set_mode((500, 400))
         self.start_run = True
@@ -53,9 +53,12 @@ class Start():
 
         self.screen.fill((155, 205, 155))
         welcome = self.font.render("Welcome to 2048 :)", True, (0, 0, 0))
-        rules = self.font.render("Merge the cubes until you reach 2048!", True, (0, 0, 0))
-        start_instructions = self.font.render("Press enter to start", True, (0, 0, 0))
-        choose_colour = self.font.render("Press 1 for dark mode tiles or ? for weirder colour tiles", True, (0, 0, 0))
+        rules = self.font.render(
+            "Merge the cubes until you reach 2048!", True, (0, 0, 0))
+        start_instructions = self.font.render(
+            "Press enter to start", True, (0, 0, 0))
+        choose_colour = self.font.render(
+            "Press 1 for dark mode tiles or ? for weirder colour tiles", True, (0, 0, 0))
         self.screen.blit(welcome, (170, 150))
         self.screen.blit(rules, (100, 175))
         self.screen.blit(start_instructions, (170, 327))
@@ -67,37 +70,38 @@ class Start():
 
         while self.start_run:
             for event in pygame.event.get():
-                    if event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_1:
-                            dark = True
-                            weird = False
-                            pygame.draw.rect(self.screen, (155, 205, 155), (75, 225, 400, 30))
-                            chose_dark = self.font.render(
-                                "You chose dark, press 2 for normal pastel tiles", True, (0, 0, 0))
-                            self.screen.blit(chose_dark, (80, 230))
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_1:
+                        dark = True
+                        weird = False
+                        pygame.draw.rect(
+                            self.screen, (155, 205, 155), (75, 225, 400, 30))
+                        chose_dark = self.font.render(
+                            "You chose dark, press 2 for normal pastel tiles", True, (0, 0, 0))
+                        self.screen.blit(chose_dark, (80, 230))
 
-                        elif event.key == pygame.K_7:
-                            weird = True
-                            dark = False
-                            pygame.draw.rect(self.screen, (155, 205, 155), (75, 225, 400, 30))
-                            chose_weird = self.font.render(
-                                "You chose weird, press 2 for normal pastel tiles", True, (0, 0, 0))
-                            self.screen.blit(chose_weird, (80, 230))
+                    elif event.key == pygame.K_7:
+                        weird = True
+                        dark = False
+                        pygame.draw.rect(
+                            self.screen, (155, 205, 155), (75, 225, 400, 30))
+                        chose_weird = self.font.render(
+                            "You chose weird, press 2 for normal pastel tiles", True, (0, 0, 0))
+                        self.screen.blit(chose_weird, (80, 230))
 
-                        elif event.key == pygame.K_RETURN:
-                            self.start_run = False
-                            self.screen.fill((125, 158, 192))
-                            self.grid.initialize_screen()
-                            self.grid.choose_colour(dark, weird)
-                            self.grid.run_loop()
-                            
-                        elif event.key == pygame.K_2 and (dark or weird):
-                            dark = False
-                            weird = False
-                            pygame.draw.rect(self.screen, (155, 205, 155), (75, 225, 400, 30))
-                    elif event.type == pygame.QUIT:
-                        pygame.quit()
-                        
+                    elif event.key == pygame.K_RETURN:
+                        self.start_run = False
+                        self.screen.fill((125, 158, 192))
+                        self.grid.initialize_screen()
+                        self.grid.choose_colour(dark, weird)
+                        self.grid.run_loop()
+
+                    elif event.key == pygame.K_2 and (dark or weird):
+                        dark = False
+                        weird = False
+                        pygame.draw.rect(
+                            self.screen, (155, 205, 155), (75, 225, 400, 30))
+                elif event.type == pygame.QUIT:
+                    pygame.quit()
+
             pygame.display.update()
-
-                            

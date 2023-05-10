@@ -21,5 +21,7 @@
 | 4.4. | 3h   | riippuvaisuuksia ja toiminnallisuutta|
 | 5.4. | 6h   | riippuvaisuuksia ja toiminnallisuutta, score ja highscore|
 | 5.4. | 3h   | dokumentontia, arkkitehtuuria, testejä|
+ 8.4. | 4h   | toiminnallisuutta|
+| 9.4. | 3h   | arkkitehtuuria, viimeistelyä|
 
-yht: 54h
+yht: 61h

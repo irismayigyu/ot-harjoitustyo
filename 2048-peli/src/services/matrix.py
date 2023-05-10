@@ -24,19 +24,21 @@ class Matrix:
         self.empty_cubes = []
         self.grid = [[0 for _ in range(4)] for _ in range(4)]
         self.merge_done = [[False for _ in range(4)] for _ in range(4)]
+        self.game_over = False
         self.initialize_game()
 
     def initialize_game(self):
         self.empty_cubes = []
         self.merge_done = [[False for _ in range(4)] for _ in range(4)]
-        # self.grid  = [[0, 0, 0, 0],
-        #               [0, 0, 0, 0],
-        #               [0, 0, 0, 0],
-        #               [0, 0, 0, 0]]
-        self.grid = [[32, 16, 32, 64],  # pelin päättymisen testausta varten
-                     [256, 8, 2, 4],
-                     [128, 2048, 2, 2],
-                     [2, 2, 2, 2]]
+        self.grid  = [[0, 0, 0, 0],
+                      [0, 0, 0, 0],
+                      [0, 0, 0, 0],
+                      [0, 0, 0, 0]]
+        # self.grid = [[32, 16, 32, 64],  # pelin päättymisen testausta varten
+        #              [256, 8, 2, 4],
+        #              [128, 2048, 2, 2],
+        #              [2, 2, 2, 2]]
+        self.starting_cubes()
 
     def starting_cubes(self):
         '''Luokan metodi, joka asettaa kaksi aloituslaattaa satunnaisille paikoille
@@ -78,6 +80,30 @@ class Matrix:
             self.grid[new_cube[0]][new_cube[1]] = value
             self.empty_cubes.remove(new_cube)
             self.merge_done = [[False for _ in range(4)] for _ in range(4)]
+
+    def checker(self):  # matrix
+        '''Luokan metodi, joka tarkistaa onko peli päättynyt.
+
+        Jos peli on päättynyt, game_over muuttuja muuttuu.
+
+        Args: 
+                game_over: boolean-kertoo kun peli on ohi
+        '''
+
+        for i in self.grid:
+            if 0 in i:
+                return False
+        for i in self.grid:
+            for j in range(3):
+                if i[j] == i[j+1]:
+                    return False
+        for i in range(4):
+            for j in range(3):
+                if self.grid[j][i] == self.grid[j+1][i]:
+                    return False
+
+        self.game_over = True
+        return True
 
     def movement_up(self):
         '''Luokan metodi, joka määrittää liikkeen ylöspäin.

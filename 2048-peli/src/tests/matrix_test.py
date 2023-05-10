@@ -1,6 +1,6 @@
 
 import unittest
-from matrix import Matrix
+from services.matrix import Matrix
 
 
 class TestMatrix(unittest.TestCase):
@@ -77,3 +77,17 @@ class TestMatrix(unittest.TestCase):
             for j in range(4):
                 total += self.matrix.grid[i][j]
         self.assertEqual(total < 8, True)
+
+    def test_if_checker_senses_if_game_over(self):
+        self.matrix.grid == [[0, 0, 0, 0],
+                     [0, 0, 0, 0],
+                     [0, 0, 0, 0],
+                     [0, 0, 0, 0]]
+        self.assertEqual(self.matrix.checker() == False, True)
+
+    def test_if_checker_senses_if_game_isnt_over(self):
+        self.matrix.grid = [[32, 16, 32, 64],
+                    [256, 8, 2, 4],
+                    [128, 2048, 8, 16],
+                    [8, 128, 2, 8]]
+        self.assertEqual(self.matrix.checker() == True, True)
