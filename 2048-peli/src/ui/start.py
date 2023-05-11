@@ -1,6 +1,7 @@
 import pygame
 from ui.grid import Grid
 from services.matrix import Matrix
+from database_connection import get_database_connection
 
 
 class Start():
@@ -29,12 +30,12 @@ class Start():
                 grid: Grid-luokan olio
 
         '''
-        #pygame.init()
+        # pygame.init()
         self.font = pygame.font.SysFont("Comic Sans", 16)
         self.screen = pygame.display.set_mode((500, 400))
         self.start_run = True
         self.matrix = Matrix()
-        self.grid = Grid(self.screen, self.matrix)
+        self.grid = Grid(self.screen, self.matrix, get_database_connection())
 
     def start_loop(self):
         '''Luokan konstruktori, joka alustaa aloituksen

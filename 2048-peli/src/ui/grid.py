@@ -2,7 +2,7 @@
 import pygame
 from gamecolours import Colours
 from ui.ending import Ending
-from handle_highscore import HandleHighscore
+# from database_connection import get_database_connection
 
 
 class Grid:
@@ -21,7 +21,7 @@ class Grid:
 
     '''
 
-    def __init__(self, screen, matrix):
+    def __init__(self, screen, matrix, connection):
         '''Luokan konstruktori, joka alustaa luokan argumentit.
 
         Args: 
@@ -39,15 +39,27 @@ class Grid:
 
         self.matrix = matrix
         self.font = pygame.font.SysFont("Comic Sans", 17)
-        self.cubes_list = []  # pitäistkö tehä oma entities-kansio jossa ois cubes_list tiedosto
+        self.cubes_list = []  
         self.colour = Colours()
         self.screen = screen
-        self.count = 0
         self.ending_matrix = [[0 for _ in range(4)] for _ in range(4)]
-        self.ending = Ending()
-        self.hscore = HandleHighscore()
-        self.highscore = self.hscore.initialize_highscore()
-        self.init_high = self.hscore.initialize_init_high()
+        self._connection = connection
+        self.ending = Ending(self._connection)
+        self.highscore = 0
+        self.init_high = self.get_hs()
+        if self.init_high is not None:
+            self.highscore = self.init_high
+
+    def get_hs(self):
+        cursor = self._connection.cursor()
+        cursor.execute("SELECT h.result FROM Highscores h ORDER BY result DESC LIMIT 1;")
+        rows = cursor.fetchall()
+        if rows:
+            return rows[0][0]
+        else:
+            return 0
+
+
 
     def run_loop(self):
         '''Luokan metodi, joka kutsuu draw-cubes- ja movement-metodeja. Sulkee pelin tarvittaessa.
@@ -57,15 +69,13 @@ class Grid:
                 movement: metodi, joka kuvaa laattojen liikettä
         '''
         while True:
-            self.screen.fill((255, 255, 255))
+            self.screen.fill((125, 158, 192))
             self.initialize_screen()
             self.draw_cubes()
             pygame.display.update()
 
             if self.matrix.score >= self.highscore:
                 self.highscore = self.matrix.score
-
-
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -90,7 +100,6 @@ class Grid:
                 self.matrix.movement_up()
             elif event.key == pygame.K_DOWN:
                 self.matrix.movement_down()
-            self.score()
             self.matrix.checker()
             if self.matrix.game_over:
                 self.restart_game()
@@ -101,9 +110,19 @@ class Grid:
         self.matrix.game_over = False
         self.count = 0
         self.matrix.score = 0
+        cursor = self._connection.cursor()
+        cursor.execute("INSERT INTO Highscores (result) VALUES (?)", [self.highscore])
+
+        # cursor.execute("SELECT * FROM Highscores")
+        # rows = cursor.fetchall()
+        # for row in rows:
+        #     print(row)
+
+        if self.highscore>self.init_high:
+            self.init_high=self.highscore
         self.matrix.grid = self.ending.game_ends(self.ending_matrix)
-        if self.highscore > self.init_high:
-            self.init_high = self.hscore.update(self.highscore)
+
+
         self.matrix.starting_cubes()
         self.initialize_screen()
 
@@ -111,22 +130,17 @@ class Grid:
         '''Luokan metodi, joka alustaa näytön
 
         '''
-        # while self.count < 1:
-        #     self.count = 1
         highscore_text = self.font .render("High score", True, (0, 0, 0))
         self.screen.blit(highscore_text, (390, 130))
         score_text = self.font .render("Score", True, (0, 0, 0))
         self.screen.blit(score_text, (410, 200))
         self.score()
 
-
     def score(self):
         highscore_number = self.font .render(
-            str(self.highscore), True, (0, 0, 0))
+            str(self.highscore), True, (0, 0, 0)) 
         score_number = self.font .render(
             str(self.matrix.score), True, (0, 0, 0))
-        # pygame.draw.rect(self.screen, (125, 158, 192), (400, 158, 100, 30))
-        # pygame.draw.rect(self.screen, (125, 158, 192), (400, 230, 100, 30))
         self.screen.blit(highscore_number, (430, 160))
         self.screen.blit(score_number, (430, 235))
 
@@ -170,4 +184,3 @@ class Grid:
                 pygame.draw.rect(
                     self.screen, (185, 211, 238), cube_rect, 0, 6)
 
-        

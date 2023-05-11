@@ -80,14 +80,14 @@ class TestMatrix(unittest.TestCase):
 
     def test_if_checker_senses_if_game_over(self):
         self.matrix.grid == [[0, 0, 0, 0],
-                     [0, 0, 0, 0],
-                     [0, 0, 0, 0],
-                     [0, 0, 0, 0]]
+                             [0, 0, 0, 0],
+                             [0, 0, 0, 0],
+                             [0, 0, 0, 0]]
         self.assertEqual(self.matrix.checker() == False, True)
 
     def test_if_checker_senses_if_game_isnt_over(self):
         self.matrix.grid = [[32, 16, 32, 64],
-                    [256, 8, 2, 4],
-                    [128, 2048, 8, 16],
-                    [8, 128, 2, 8]]
+                            [256, 8, 2, 4],
+                            [128, 2048, 8, 16],
+                            [8, 128, 2, 8]]
         self.assertEqual(self.matrix.checker() == True, True)

@@ -30,15 +30,15 @@ class Matrix:
     def initialize_game(self):
         self.empty_cubes = []
         self.merge_done = [[False for _ in range(4)] for _ in range(4)]
-        self.grid  = [[0, 0, 0, 0],
-                      [0, 0, 0, 0],
-                      [0, 0, 0, 0],
-                      [0, 0, 0, 0]]
-        # self.grid = [[32, 16, 32, 64],  # pelin päättymisen testausta varten
-        #              [256, 8, 2, 4],
-        #              [128, 2048, 2, 2],
-        #              [2, 2, 2, 2]]
-        self.starting_cubes()
+        # self.grid = [[0, 0, 0, 0],
+        #              [0, 0, 0, 0],
+        #              [0, 0, 0, 0],
+        #              [0, 0, 0, 0]]
+        self.grid = [[32, 16, 32, 64],  # pelin päättymisen testausta varten
+                     [256, 8, 2, 4],
+                     [128, 2048, 64, 2],
+                     [2, 4, 16, 2]]
+        #self.starting_cubes()
 
     def starting_cubes(self):
         '''Luokan metodi, joka asettaa kaksi aloituslaattaa satunnaisille paikoille
