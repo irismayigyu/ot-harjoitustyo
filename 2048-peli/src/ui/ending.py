@@ -1,5 +1,5 @@
 import pygame
-from data import highscore_func
+from ..src import highscore_func
 
 class Ending():
 
