@@ -28,10 +28,10 @@ Sovelluksen toimintaa testattu Python-versiolla `3.8`. On siis mahdollista että
 poetry install
 ```
 3. Sovelluksen pitäisi luoda database.sqlite automaattisesti, mutta jos tällaista ei näy data-kansiossa,
-sen vaa luotua komennolla:
+sen saa luotua komennolla:
 
 ```bash
-poetry run invoke start
+poetry run invoke build
 ```
 
 2. Sovelluksen käynnistäminen:

@@ -10,6 +10,13 @@ Ennen ohjelman käynnistämistä, riippuvuudet voi asentaa komennolla:
 poetry install
 ```
 
+Sovelluksen pitäisi luoda database.sqlite automaattisesti, mutta jos tällaista ei näy data-kansiossa,
+sen saa luotua komennolla:
+
+```bash
+poetry run invoke build
+```
+
 Nyt voit käynnistää sen komennolla:
 
 ```
