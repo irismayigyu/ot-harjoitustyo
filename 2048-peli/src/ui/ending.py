@@ -1,5 +1,5 @@
 import pygame
-
+from data import highscore_func
 
 class Ending():
 
@@ -14,7 +14,7 @@ class Ending():
 
     '''
 
-    def __init__(self,connection):
+    def __init__(self, connection):
         '''Luokan konstruktori, joka alustaa lopetuksen
 
         Args:
@@ -23,24 +23,24 @@ class Ending():
                     run: pitää lopetusnäyttöä yllä kunnes peslaaja painaa välilyöntiä
 
         '''
-        pygame.init()
         self.font = pygame.font.SysFont("Comic Sans", 20)
         self.screen = pygame.display.set_mode((500, 400))
         self.run = True
-        self._connection = connection
-        cursor = self._connection.cursor()
-        cursor.execute("SELECT h.player, h.result FROM Highscores h ORDER BY result DESC LIMIT 3;")
-        rows = cursor.fetchall()
-        self.highest_scores = ""
-        for i, row in enumerate(rows):
-            player = row[0]
-            result = row[1]
-            score_str = f"{i+1}. {player}: {result}"
-            self.highest_scores += score_str
-            print(self.highest_scores)
-            if i != len(rows) - 1:
-                self.highest_scores += "\n"
-            
+        self.highest_scores = highscore_func.top3()
+        # self._connection = connection
+        # cursor = self._connection.cursor()
+        # cursor.execute(
+        #     "SELECT h.player, h.result FROM Highscores h ORDER BY result DESC LIMIT 3;")
+        # rows = cursor.fetchall()
+        # self.highest_scores = ""
+        # for i, row in enumerate(rows):
+        #     player = row[0]
+        #     result = row[1]
+        #     score_str = f"{i+1}. {player}: {result}"
+        #     self.highest_scores += score_str
+        #     print(self.highest_scores)
+
+
     def game_ends(self, ending_matrix):
         '''Luokan metodi, joka luo ja piirtää päättysmisnäytön
 

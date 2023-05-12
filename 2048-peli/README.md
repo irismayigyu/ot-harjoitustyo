@@ -27,6 +27,12 @@ Sovelluksen toimintaa testattu Python-versiolla `3.8`. On siis mahdollista että
 ```bash
 poetry install
 ```
+3. Sovelluksen pitäisi luoda database.sqlite automaattisesti, mutta jos tällaista ei näy data-kansiossa,
+sen vaa luotua komennolla:
+
+```bash
+poetry run invoke start
+```
 
 2. Sovelluksen käynnistäminen:
 
@@ -69,3 +75,6 @@ Tiedoston [.pylintrc](./.pylintrc) määrittelemät tarkistukset suoritetaan kom
 ```bash
 poetry run invoke lint
 ```
+## HUOM
+
+Tiedoston databasen alustamisen ja yhteydenluonnin suorina lähteinä on käytetty kurssimateriaalia!

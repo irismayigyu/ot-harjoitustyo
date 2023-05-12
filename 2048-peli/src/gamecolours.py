@@ -74,17 +74,29 @@ class Colours:
                               4096: self.weirder_colours(self.colourlist)[11]}
 
     def rgb_to_hsl(self, color_rgb):
-        r, g, b = color_rgb
-        h, l, s = colorsys.rgb_to_hls(r/255, g/255, b/255)
-        return int(h*255), int(s*255), int(l*255)
+        '''Luokan metodi, joka muuttaa värit rgb:stä hsl-väreiksi
+
+        '''
+        
+        red, green, blue = color_rgb
+        hue, lightness, saturation = colorsys.rgb_to_hls(
+        red/255, green/255, blue/255)
+        return int(hue*255), int(saturation*255), int(lightness*255)
 
     def make_colour_darker(self, color_hsl, amount=1.5):
-        h, s, l = color_hsl
-        new_l = max(0, l - amount*100)
-        r, g, b = colorsys.hls_to_rgb(h/255, new_l/255, s/255)
-        return int(r*255), int(g*255), int(b*255)
+        '''Luokan metodi, joka tekee värit tummemmiksi
+        
+        '''
+        
+        hue, saturation, lightness = color_hsl
+        new_l = max(0, lightness - amount*100)
+        red, green, blue = colorsys.hls_to_rgb(
+            hue/255, new_l/255, saturation/255)
+        return int(red*255), int(green*255), int(blue*255)
 
     def darken_colours(self, colourlist):
+        '''Luokan metodi joka kutsuu rgb_to_hsl ja make_colour_darker. Palauttaa tummemmat värit'''
+
         self.colours_hsl = [self.rgb_to_hsl(
             color_rgb) for color_rgb in colourlist]
         self.colours_hsl_dark = [self.make_colour_darker(
@@ -92,11 +104,17 @@ class Colours:
         return self.colours_hsl_dark
 
     def make_colour_weird(self, color_hsl, amount=0.5):
-        h, s, l = color_hsl
-        new_l = max(0, l - amount*100)
-        return (h, s, new_l)
+        '''Luokan metodi, joka luo satunnaisia värejä
+        
+        '''
+        hue, saturation, lightness = color_hsl
+        new_l = max(0, lightness - amount*100)
+        return (hue, saturation, new_l)
 
     def weirder_colours(self, colourlist):
+        ''''Luokan metodi joka kutsuu rgb_to_hsl ja make_colour_weirder. Palauttaa satunnaiset värit
+        
+        '''
         self.colours_hsl = [self.rgb_to_hsl(
             color_rgb) for color_rgb in colourlist]
         self.colours_weird = [self.make_colour_weird(

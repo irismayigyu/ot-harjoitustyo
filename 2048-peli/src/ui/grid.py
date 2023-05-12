@@ -2,6 +2,7 @@
 import pygame
 from gamecolours import Colours
 from ui.ending import Ending
+from . import get_hs, insert_in_table
 # from database_connection import get_database_connection
 
 
@@ -39,27 +40,26 @@ class Grid:
 
         self.matrix = matrix
         self.font = pygame.font.SysFont("Comic Sans", 17)
-        self.cubes_list = []  
+        self.cubes_list = []
         self.colour = Colours()
         self.screen = screen
         self.ending_matrix = [[0 for _ in range(4)] for _ in range(4)]
         self._connection = connection
         self.ending = Ending(self._connection)
         self.highscore = 0
-        self.init_high = self.get_hs()
+        self.init_high = get_hs()
         if self.init_high is not None:
             self.highscore = self.init_high
 
-    def get_hs(self):
-        cursor = self._connection.cursor()
-        cursor.execute("SELECT h.result FROM Highscores h ORDER BY result DESC LIMIT 1;")
-        rows = cursor.fetchall()
-        if rows:
-            return rows[0][0]
-        else:
-            return 0
-
-
+    # def get_hs(self):
+    #     cursor = self._connection.cursor()
+    #     cursor.execute(
+    #         "SELECT h.result FROM Highscores h ORDER BY result DESC LIMIT 1;")
+    #     rows = cursor.fetchall()
+    #     if rows:
+    #         return rows[0][0]
+    #     else:
+    #         return 0
 
     def run_loop(self):
         '''Luokan metodi, joka kutsuu draw-cubes- ja movement-metodeja. Sulkee pelin tarvittaessa.
@@ -105,23 +105,26 @@ class Grid:
                 self.restart_game()
 
     def restart_game(self):
-        self.ending_matrix = self.matrix.grid
-        self.ending.run = True
-        self.matrix.game_over = False
-        self.count = 0
-        self.matrix.score = 0
-        cursor = self._connection.cursor()
-        cursor.execute("INSERT INTO Highscores (result) VALUES (?)", [self.highscore])
+        # cursor = self._connection.cursor()
+        # cursor.execute("INSERT INTO Highscores (result) VALUES (?)", [
+        #                self.highscore])
+        # self._connection.commit()
 
         # cursor.execute("SELECT * FROM Highscores")
         # rows = cursor.fetchall()
         # for row in rows:
         #     print(row)
+        # self._connection.commit()
+        insert_in_table()
+        self.ending_matrix = self.matrix.grid
+        self.ending.run = True
+        self.matrix.game_over = False
+        self.count = 0
+        self.matrix.score = 0
 
-        if self.highscore>self.init_high:
-            self.init_high=self.highscore
+        if self.highscore > self.init_high:
+            self.init_high = self.highscore
         self.matrix.grid = self.ending.game_ends(self.ending_matrix)
-
 
         self.matrix.starting_cubes()
         self.initialize_screen()
@@ -138,7 +141,7 @@ class Grid:
 
     def score(self):
         highscore_number = self.font .render(
-            str(self.highscore), True, (0, 0, 0)) 
+            str(self.highscore), True, (0, 0, 0))
         score_number = self.font .render(
             str(self.matrix.score), True, (0, 0, 0))
         self.screen.blit(highscore_number, (430, 160))
@@ -183,4 +186,3 @@ class Grid:
             if value == 0:
                 pygame.draw.rect(
                     self.screen, (185, 211, 238), cube_rect, 0, 6)
-

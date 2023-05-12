@@ -38,7 +38,7 @@ class Matrix:
                      [256, 8, 2, 4],
                      [128, 2048, 64, 2],
                      [2, 4, 16, 2]]
-        #self.starting_cubes()
+        # self.starting_cubes()
 
     def starting_cubes(self):
         '''Luokan metodi, joka asettaa kaksi aloituslaattaa satunnaisille paikoille
