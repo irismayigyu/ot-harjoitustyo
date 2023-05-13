@@ -10,13 +10,6 @@ Ennen ohjelman käynnistämistä, riippuvuudet voi asentaa komennolla:
 poetry install
 ```
 
-Sovelluksen pitäisi luoda database.sqlite automaattisesti, mutta jos tällaista ei näy data-kansiossa,
-sen saa luotua komennolla:
-
-```bash
-poetry run invoke build
-```
-
 Nyt voit käynnistää sen komennolla:
 
 ```
@@ -32,14 +25,14 @@ Peliin pääsee painamalla Enter-näppäintä.
 
 ## Pelaaminen
 
-Nyt pääset pelaamaan peliä, tarkoitus on siis yhdistää laattoja toisiinsa, tavoitteena luku 2048. Käytä nuolinäppäimiä hallitaksesi laattojen liiketta! 
+Nyt pääset pelaamaan peliä, tarkoitus on siis yhdistää laattoja toisiinsa, tavoitteena luku 2048. Käytä nuolinäppäimiä hallitaksesi laattojen liikettä! 
 
 ![](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/Screenshot%202023-04-30%20at%200.21.36.png)
 
 ## Pelin päättyminen
 
-Peli päättyy jos ruudukko on täynnä eikä yhdistyksiä voi enää tehdä. Tällöin sovellukseen avautuu lopetusnäyttö. Paina välilyönti-näppäintä aloittaaksesi uuden pelin.
+Pelaaja häviää, jos ruudukko on täynnä eikä yhdistyksiä voi enää tehdä. Tällöin sovellukseen avautuu lopetusnäyttö. Toisaalta, jos pelaaja saavuttaa luvun 2048, voittonäyttö aukeaa. Paina välilyönti-näppäintä aloittaaksesi uuden pelin. 
 
 ![](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/Screenshot%202023-04-30%20at%200.24.23.png)
 
-Nyt peli palaa takaisin pelaamisnäkymään. Svelluksesta pääsee pois painamalla ruksia. 
+Nyt peli palaa takaisin pelaamisnäkymään. Sovelluksesta pääsee pois painamalla ruksia. 

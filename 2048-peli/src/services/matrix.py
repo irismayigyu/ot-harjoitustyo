@@ -16,7 +16,7 @@ class Matrix:
 
         Args: 
 
-                    initialize_game(): funktio alustaa tyhjän ruudukon
+                    _initialize_game(): funktio alustaa tyhjän ruudukon
 
         '''
         self.score = 0
@@ -25,20 +25,17 @@ class Matrix:
         self.grid = [[0 for _ in range(4)] for _ in range(4)]
         self.merge_done = [[False for _ in range(4)] for _ in range(4)]
         self.game_over = False
-        self.initialize_game()
+        self.game_won = False
+        self._initialize_game()
 
-    def initialize_game(self):
+    def _initialize_game(self):
         self.empty_cubes = []
         self.merge_done = [[False for _ in range(4)] for _ in range(4)]
-        # self.grid = [[0, 0, 0, 0],
-        #              [0, 0, 0, 0],
-        #              [0, 0, 0, 0],
-        #              [0, 0, 0, 0]]
-        self.grid = [[32, 16, 32, 64],  # pelin päättymisen testausta varten
-                     [256, 8, 2, 4],
-                     [128, 2048, 64, 2],
-                     [2, 4, 16, 2]]
-        # self.starting_cubes()
+        self.grid = [[0, 0, 0, 0],
+                     [0, 0, 0, 0],
+                     [0, 0, 0, 0],
+                     [0, 0, 0, 0]]
+        self.starting_cubes()
 
     def starting_cubes(self):
         '''Luokan metodi, joka asettaa kaksi aloituslaattaa satunnaisille paikoille
@@ -56,9 +53,9 @@ class Matrix:
                       random.choice(range(0, 4)))
         self.grid[start1[0]][start1[1]] = 2
         self.grid[start2[0]][start2[1]] = 2
-        return (start1, start2)  # testejä varten
+        return (start1, start2)
 
-    def new_cubes(self):
+    def _new_cubes(self):
         '''Luokan metodi, joka luo uuden laatan satunnaiselle paikalla
 
         Args: 
@@ -81,7 +78,7 @@ class Matrix:
             self.empty_cubes.remove(new_cube)
             self.merge_done = [[False for _ in range(4)] for _ in range(4)]
 
-    def checker(self):  # matrix
+    def checker(self):
         '''Luokan metodi, joka tarkistaa onko peli päättynyt.
 
         Jos peli on päättynyt, game_over muuttuja muuttuu.
@@ -105,6 +102,13 @@ class Matrix:
         self.game_over = True
         return True
 
+    def win_checker(self):
+        for row in self.grid:
+            for i in row:
+                if i == 2048:
+                    self.game_won = True
+        return True
+
     def movement_up(self):
         '''Luokan metodi, joka määrittää liikkeen ylöspäin.
 
@@ -123,15 +127,15 @@ class Matrix:
         for j in range(4):
             for i in range(4):
                 if self.grid[i][j] != 0:
-                    self.grid = self.get_next_tile_up(i, j)
+                    self.grid = self._get_next_tile_up(i, j)
         if 0 in self.grid[3]:
             pass
         else:
             self.spawn = False
         if self.spawn:
-            self.new_cubes()
+            self._new_cubes()
 
-    def get_next_tile_up(self, i, j):
+    def _get_next_tile_up(self, i, j):
         '''Luokan metodi, joka tarkistaa onko ylempänä
         tyhjä tai samanarvoinen laatta ja suorittaa tarvittaessa liikkeen ja/tai yhdistämisen.
 
@@ -142,7 +146,7 @@ class Matrix:
         while k > 0 and (self.grid[k-1][j] == 0 or self.grid[k-1][j] == self.grid[i][j]):
             k -= 1
         if k != i:
-            self.grid = self.changes_up_and_down(k, i, j)
+            self.grid = self._changes_up_and_down(k, i, j)
             self.spawn = True
         return self.grid
 
@@ -164,16 +168,16 @@ class Matrix:
         for j in range(4):
             for i in range(2, -1, -1):
                 if self.grid[i][j] != 0:
-                    self.grid = self.get_next_tile_down(i, j)
+                    self.grid = self._get_next_tile_down(i, j)
 
         if 0 in self.grid[0]:
             pass
         else:
             self.spawn = False
         if self.spawn:
-            self.new_cubes()
+            self._new_cubes()
 
-    def get_next_tile_down(self, i, j):
+    def _get_next_tile_down(self, i, j):
         '''Luokan metodi, joka tarkistaa onko alempana
         tyhjä tai samanarvoinen laatta ja suorittaa tarvittaessa liikkeen ja/tai yhdistämisen.
 
@@ -185,11 +189,11 @@ class Matrix:
                          or self.grid[k+1][j] == self.grid[i][j]):
             k += 1
         if k != i:
-            self.grid = self.changes_up_and_down(k, i, j)
+            self.grid = self._changes_up_and_down(k, i, j)
             self.spawn = True
         return self.grid
 
-    def changes_up_and_down(self, k, i, j):
+    def _changes_up_and_down(self, k, i, j):
         '''Luokan metodi, joka määrittelee ja tekee liikkeen ja/tai yhdistämisen ylös ja alas'''
 
         if self.grid[k][j] == self.grid[i][j] \
@@ -223,15 +227,15 @@ class Matrix:
         for i in range(4):
             for j in range(4):
                 if self.grid[i][j] != 0:
-                    self.grid = self.get_next_tile_left(i, j)
+                    self.grid = self._get_next_tile_left(i, j)
         if 0 in [row[3] for row in self.grid]:
             pass
         else:
             self.spawn = False
-        result = self.new_cubes() if self.spawn else None
+        result = self._new_cubes() if self.spawn else None
         return result
 
-    def get_next_tile_left(self, i, j):
+    def _get_next_tile_left(self, i, j):
         '''Luokan metodi, joka tarkistaa onko vasemmalla
         tyhjä tai samanarvoinen laatta ja suorittaa tarvittaessa liikkeen ja/tai yhdistämisen.
 
@@ -243,7 +247,7 @@ class Matrix:
                          or self.grid[i][k-1] == self.grid[i][j]):
             k -= 1
         if k != j:
-            self.grid = self.changes_left_and_right(k, i, j)
+            self.grid = self._changes_left_and_right(k, i, j)
             self.spawn = True
         return self.grid
 
@@ -266,15 +270,15 @@ class Matrix:
         for i in range(4):
             for j in range(3, -1, -1):
                 if self.grid[i][j] != 0:
-                    self.grid = self.get_next_tile_right(i, j)
+                    self.grid = self._get_next_tile_right(i, j)
         if 0 in [row[0] for row in self.grid]:
             pass
         else:
             self.spawn = False
-        result = self.new_cubes() if self.spawn else None
+        result = self._new_cubes() if self.spawn else None
         return result
 
-    def get_next_tile_right(self, i, j):
+    def _get_next_tile_right(self, i, j):
         '''Luokan metodi, joka tarkistaa onko oikealla
         tyhjä tai samanarvoinen laatta ja suorittaa tarvittaessa liikkeen ja/tai yhdistämisen.
 
@@ -285,11 +289,11 @@ class Matrix:
                          or self.grid[i][k+1] == self.grid[i][j]):
             k += 1
         if k != j:
-            self.grid = self.changes_left_and_right(k, i, j)
+            self.grid = self._changes_left_and_right(k, i, j)
             self.spawn = True
         return self.grid
 
-    def changes_left_and_right(self, k, i, j):
+    def _changes_left_and_right(self, k, i, j):
         '''Luokan metodi, joka määrittelee ja tekee liikkeen ja/tai yhdistämisen sivuille'''
 
         if self.grid[i][k] == self.grid[i][j] \

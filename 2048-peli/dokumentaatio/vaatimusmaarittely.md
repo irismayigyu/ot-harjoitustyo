@@ -34,7 +34,15 @@ Sovellus aukeaa aloitusnäkymään, josta on mahdollista siirtyä pelivaiheeseen
 - Peli laskee pelaajan scorea sekä osaa tallettaa highscoren.
 - Pelaaja häviää kun ruudukko on täynnä eikä yhdistämisiä voi enää tehdä.
 - Lopetusnäkymä avautuu pelaajan hävittyä ja siitä takaisin peliin pääsee painalla välilyöntiä.
+- Pelaaja voittaa jos hän saavuttaa luvun 2048.
+- Voittonäkymä avautuu jos pelaaja voittaa. Takaisin peliin pääsee painamalla välilyöntiä. 
+- Alkunäytössä pelaaja voi valita laatoille väriyhdistelmän kolmesta eri vaihtoehdosta. 
+- Pelaaja saa tietää mitä näppäintä pitää painaa, saadakseen kolmannen vaihtoehdon, jos hän voittaa pelin.
 
 ## Jatkokehitysideoita
-- Player can choose between light mode and dark mode grids.
-- Cube pulses when a merge is done. 
+- Laatat värähtäisivät, kun ne yhdistyvät
+- Peliä voisi jatkaa luvun 2048 saamisen jälkeen
+- Dark mode laatat olisivat kivemman väriset
+- Highscoren-tallettamiseen voisi käyttää sql-tietokantaa ja pelin päätyttyä, top3 ennätystä näytettäisiin
+- Kun pelaaja ylittäisi Highscoren, sovellus kysyisi häneltä nicknamea ja hän pääsisi top3-scoreboardiin. 
+

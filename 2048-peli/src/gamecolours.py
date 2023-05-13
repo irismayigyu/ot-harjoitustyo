@@ -77,17 +77,17 @@ class Colours:
         '''Luokan metodi, joka muuttaa värit rgb:stä hsl-väreiksi
 
         '''
-        
+
         red, green, blue = color_rgb
         hue, lightness, saturation = colorsys.rgb_to_hls(
-        red/255, green/255, blue/255)
+            red/255, green/255, blue/255)
         return int(hue*255), int(saturation*255), int(lightness*255)
 
     def make_colour_darker(self, color_hsl, amount=1.5):
         '''Luokan metodi, joka tekee värit tummemmiksi
-        
+
         '''
-        
+
         hue, saturation, lightness = color_hsl
         new_l = max(0, lightness - amount*100)
         red, green, blue = colorsys.hls_to_rgb(
@@ -105,7 +105,7 @@ class Colours:
 
     def make_colour_weird(self, color_hsl, amount=0.5):
         '''Luokan metodi, joka luo satunnaisia värejä
-        
+
         '''
         hue, saturation, lightness = color_hsl
         new_l = max(0, lightness - amount*100)
@@ -113,7 +113,7 @@ class Colours:
 
     def weirder_colours(self, colourlist):
         ''''Luokan metodi joka kutsuu rgb_to_hsl ja make_colour_weirder. Palauttaa satunnaiset värit
-        
+
         '''
         self.colours_hsl = [self.rgb_to_hsl(
             color_rgb) for color_rgb in colourlist]

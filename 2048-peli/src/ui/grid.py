@@ -2,8 +2,8 @@
 import pygame
 from gamecolours import Colours
 from ui.ending import Ending
-from . import get_hs, insert_in_table
-# from database_connection import get_database_connection
+from handle_highscore import HandleHighscore
+from ui.won import Won
 
 
 class Grid:
@@ -22,7 +22,7 @@ class Grid:
 
     '''
 
-    def __init__(self, screen, matrix, connection):
+    def __init__(self, screen, matrix):
         '''Luokan konstruktori, joka alustaa luokan argumentit.
 
         Args: 
@@ -32,9 +32,11 @@ class Grid:
                 colour: Colours-luokan olio
                 screen: näyttö
                 game_over: tarkistaa onko peli ohi
-                count: pitää huolen että score-tekstit piirretään vain kerran kerralla. 
                 ending: Ending-luokan olio
+                hscore: HandleHighscore-luokan olio
                 initialize_screen(): piirtää näytön
+                self.highscore: highscore
+                self.init_high: alustettu highscore
 
         '''
 
@@ -43,23 +45,12 @@ class Grid:
         self.cubes_list = []
         self.colour = Colours()
         self.screen = screen
+        self.won = Won()
         self.ending_matrix = [[0 for _ in range(4)] for _ in range(4)]
-        self._connection = connection
-        self.ending = Ending(self._connection)
-        self.highscore = 0
-        self.init_high = get_hs()
-        if self.init_high is not None:
-            self.highscore = self.init_high
-
-    # def get_hs(self):
-    #     cursor = self._connection.cursor()
-    #     cursor.execute(
-    #         "SELECT h.result FROM Highscores h ORDER BY result DESC LIMIT 1;")
-    #     rows = cursor.fetchall()
-    #     if rows:
-    #         return rows[0][0]
-    #     else:
-    #         return 0
+        self.ending = Ending()
+        self.hscore = HandleHighscore()
+        self.highscore = self.hscore.initialize_highscore()
+        self.init_high = self.hscore.initialize_init_high()
 
     def run_loop(self):
         '''Luokan metodi, joka kutsuu draw-cubes- ja movement-metodeja. Sulkee pelin tarvittaessa.
@@ -68,22 +59,24 @@ class Grid:
                 draw_cubes: metodi, joka piirtää laatat
                 movement: metodi, joka kuvaa laattojen liikettä
         '''
-        while True:
+        is_running = True
+        while is_running:
             self.screen.fill((125, 158, 192))
             self.initialize_screen()
             self.draw_cubes()
-            pygame.display.update()
 
             if self.matrix.score >= self.highscore:
                 self.highscore = self.matrix.score
+            pygame.display.update()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
+                    is_running = False
                     pygame.quit()
                 else:
-                    self.movement(event)
+                    self._movement(event)
 
-    def movement(self, event):
+    def _movement(self, event):
         '''Luokan metodi, kuvaa laattojen liikkumista graaffisesti. 
         Nuolinäppäinten käyttö kutsuu Matrix-olion movement-metodeja. Jos peli on ohi
         ja painetaan välilyöntiä niin se alkaa uudestaan
@@ -100,32 +93,34 @@ class Grid:
                 self.matrix.movement_up()
             elif event.key == pygame.K_DOWN:
                 self.matrix.movement_down()
+            self.matrix.win_checker()
+            if self.matrix.game_won:
+                won = True
+                self.restart_game(won)
             self.matrix.checker()
             if self.matrix.game_over:
-                self.restart_game()
+                won = False
+                self.restart_game(won)
 
-    def restart_game(self):
-        # cursor = self._connection.cursor()
-        # cursor.execute("INSERT INTO Highscores (result) VALUES (?)", [
-        #                self.highscore])
-        # self._connection.commit()
-
-        # cursor.execute("SELECT * FROM Highscores")
-        # rows = cursor.fetchall()
-        # for row in rows:
-        #     print(row)
-        # self._connection.commit()
-        insert_in_table()
+    def restart_game(self, won):
         self.ending_matrix = self.matrix.grid
-        self.ending.run = True
-        self.matrix.game_over = False
+        if not won:
+            self.ending.run = True
+            self.matrix.game_over = False
+            self.matrix.grid = self.ending.game_ends(
+                self.ending_matrix)
+            if self.highscore > self.init_high:
+                self.init_high = self.hscore.update(self.highscore)
+        else:
+            self.won.run = True
+            self.matrix.game_won = False
+            self.matrix.grid = self.won.you_won(
+                self.ending_matrix)
+            self.highscore = 2048
+            self.init_high = self.hscore.update(2048)
+
         self.count = 0
         self.matrix.score = 0
-
-        if self.highscore > self.init_high:
-            self.init_high = self.highscore
-        self.matrix.grid = self.ending.game_ends(self.ending_matrix)
-
         self.matrix.starting_cubes()
         self.initialize_screen()
 
@@ -137,9 +132,9 @@ class Grid:
         self.screen.blit(highscore_text, (390, 130))
         score_text = self.font .render("Score", True, (0, 0, 0))
         self.screen.blit(score_text, (410, 200))
-        self.score()
+        self._score()
 
-    def score(self):
+    def _score(self):
         highscore_number = self.font .render(
             str(self.highscore), True, (0, 0, 0))
         score_number = self.font .render(
@@ -148,6 +143,9 @@ class Grid:
         self.screen.blit(score_number, (430, 235))
 
     def choose_colour(self, dark, weird):
+        '''Luokan metodi, määrittää laattojen värit
+
+        '''
         if dark:
             self.colour.colours = self.colour.colours_dark
         elif weird:
@@ -156,7 +154,7 @@ class Grid:
             self.colour.colours = self.colour.colours_light
 
     def draw_cubes(self):
-        '''Luokan metodi, piirtää laatat ja kirjaa niihin niiden arvot.
+        '''Luokan metodi, piirtää laatat ja kirjaa niihin niiden arvot
 
         Args: 
                 gap: laattojen välisen välin pituus
@@ -177,7 +175,7 @@ class Grid:
                 self.cubes_list.append((cube_rect, value))
 
         for cube_rect, value in self.cubes_list:
-            if value != 0:
+            if value != 0 and not value == 2048:
                 pygame.draw.rect(
                     self.screen, self.colour.colours[value], cube_rect, 0, 6)
                 text = self.font .render(str(value), True, (255, 255, 255))

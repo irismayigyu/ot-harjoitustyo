@@ -82,12 +82,31 @@ class TestMatrix(unittest.TestCase):
         self.matrix.grid == [[0, 0, 0, 0],
                              [0, 0, 0, 0],
                              [0, 0, 0, 0],
-                             [0, 0, 0, 0]]
+                             [2, 2, 0, 0]]
         self.assertEqual(self.matrix.checker() == False, True)
 
     def test_if_checker_senses_if_game_isnt_over(self):
         self.matrix.grid = [[32, 16, 32, 64],
                             [256, 8, 2, 4],
-                            [128, 2048, 8, 16],
+                            [128, 32, 8, 16],
                             [8, 128, 2, 8]]
         self.assertEqual(self.matrix.checker() == True, True)
+
+    def test_if_win_checker_senses_if_game_is_won(self):
+        self.matrix.grid = [[32, 16, 32, 64],
+                            [256, 8, 2, 4],
+                            [128, 2048, 8, 16],
+                            [8, 128, 2, 8]]
+        self.assertEqual(self.matrix.win_checker() == True, True)
+
+    def test_if_spawning_works_as_intended(self):
+        self.matrix.grid = [[0, 0, 0, 0],
+                            [0, 0, 0, 0],
+                            [0, 0, 0, 0],
+                            [2, 2, 0, 0]]
+        self.matrix.movement_down()
+        test_matrix = [[0, 0, 0, 0],
+                       [0, 0, 0, 0],
+                       [0, 0, 0, 0],
+                       [2, 2, 0, 0]]
+        self.assertEqual(self.matrix.grid == test_matrix, True)

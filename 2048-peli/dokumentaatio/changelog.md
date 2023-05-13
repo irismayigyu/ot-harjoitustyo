@@ -19,6 +19,8 @@
 - Värit-luokka luotu
 
 ## Viikko 7
-- Pelaaja pääsee aloitysnäkymään, siitä pelinäkymään ja siitä lopetusnäkymään
-- Viimeistelty liikkumisen ja yhdistämisen logiikkaa
+- Pelaaja pääsee aloitysnäkymään, siitä pelinäkymään ja siitä lopetusnäkymään tai voittonäkymään
+- Pelaaja voi alussa valita kolmesta värivaihtoehdosta
+- Laatat liikkuvat sulavemmin
+- Viimeistelty liikkumisen ja yhdistämisen rakennetta+logiikkaa
 - Score toimii ja HighScore-luokka luotu
