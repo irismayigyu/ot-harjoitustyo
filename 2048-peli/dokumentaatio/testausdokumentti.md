@@ -14,7 +14,8 @@ Sovelluslogiikasta vastaavaa `Matrix`-luokkaa testataan [matrix_test.py -tiedost
 
 Ottamatta huomioon User Interface-luokkia, sovelluksen testauksen haarautumakattavuus on 93%
 
-![](./kuvat/testikattavuus.png)
+![](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/kuvakaappaukset/coveragereport.png)
+
 
 Testaamatta jäivät _build.py_- ja _initialize\_database.py_-tiedostojen suorittaminen komentoriviltä. Nämä olisi myös voinut jättää testikattavuuden ulkopuolelle. Lisäksi testaatamatta jäivät mm. tilanteet, joissa haetaan kirjautumattoman käyttäjän tekemättömät tehtävät ja uloskirjautuminen.
 
