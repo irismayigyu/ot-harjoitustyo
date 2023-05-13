@@ -21,7 +21,7 @@ Sovellus avautuu aloitusnäkymään.
 
 ![](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/Screenshot%202023-04-30%20at%200.20.01.png)
 
-Peliin pääsee painamalla Enter-näppäintä.
+Voit vaihtaa värejä näppäimillä. Weird-tilesit saat salaisellä näppäimellä. Saat vastauksen kun olet voittanut pelin kerran! Peliin pääsee painamalla Enter-näppäintä.
 
 ## Pelaaminen
 
