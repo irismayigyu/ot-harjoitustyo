@@ -4,4 +4,4 @@
 
 [Linkki pelin README-tiedostoon](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/README.md)
 
-[Linkki pelin loppupalatukseen](https://github.com/irismayigyu/ot-harjoitustyo/releases/tag/loppupalautus)
+[Linkki pelin loppupalatukseen](https://github.com/irismayigyu/ot-harjoitustyo/releases/tag/Loppupalautus)
