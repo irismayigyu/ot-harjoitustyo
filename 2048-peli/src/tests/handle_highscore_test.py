@@ -10,3 +10,4 @@ class TestColours(unittest.TestCase):
         self.hscore.init_high = 0
         self.hscore.update(64)
         self.assertEqual(self.hscore.update(64) == 64, True)
+        self.hscore.init_high = 0
