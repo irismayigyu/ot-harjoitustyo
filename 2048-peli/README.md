@@ -1,6 +1,6 @@
 # 2048
 
-[Loppupalautus](https://github.com/irismayigyu/ot-harjoitustyo/releases/tag/loppupalautus)
+[Loppupalautus](https://github.com/irismayigyu/ot-harjoitustyo/releases/tag/Loppupalautus)
 
 [Release 1](https://github.com/irismayigyu/ot-harjoitustyo/releases/tag/viikko5)
 
