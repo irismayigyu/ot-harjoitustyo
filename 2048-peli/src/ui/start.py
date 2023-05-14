@@ -18,7 +18,7 @@ class Start():
 
     '''
 
-    def __init__(self):
+    def __init__(self, screen):
         '''Luokan konstruktori, joka alustaa aloituksen
 
         Args:
@@ -31,10 +31,11 @@ class Start():
         '''
 
         self.font = pygame.font.SysFont("Comic Sans", 16)
-        self.screen = pygame.display.set_mode((500, 400))
+        self.screen = screen
         self.start_run = True
         self.matrix = Matrix()
         self.grid = Grid(self.screen, self.matrix)
+        self.start_loop()
 
     def start_loop(self):
         '''Luokan konstruktori, joka alustaa aloituksen
@@ -63,7 +64,6 @@ class Start():
         self.screen.blit(rules, (100, 175))
         self.screen.blit(start_instructions, (170, 327))
         self.screen.blit(choose_colour, (52, 360))
-        pygame.display.update()
 
         dark = False
         weird = False
@@ -103,5 +103,6 @@ class Start():
                             self.screen, (155, 205, 155), (75, 225, 400, 30))
                 elif event.type == pygame.QUIT:
                     pygame.quit()
+                    exit()
 
             pygame.display.update()

@@ -73,6 +73,7 @@ class Grid:
                 if event.type == pygame.QUIT:
                     is_running = False
                     pygame.quit()
+                    exit()
                 else:
                     self._movement(event)
 

@@ -16,11 +16,11 @@ def init():
     '''
     pygame.init()
     pygame.display.set_caption("2048")
+    screen = pygame.display.set_mode((500, 400))
     clock = pygame.time.Clock()
     fps = 60
     clock.tick(fps)
-    start = Start()
-    start.start_loop()
+    Start(screen)
 
 
 def quit_game():
