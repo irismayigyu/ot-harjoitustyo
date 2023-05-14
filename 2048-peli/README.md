@@ -20,6 +20,11 @@ Sovelluksen toimintaa testattu Python-versiolla `3.8`. On siis mahdollista että
 
 [Pakkauskaavio](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/arkkitehtuuri.md)
 
+[Testausdokumentti](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/testausdokumentti.md)
+
+[Tyoaikakirjanpito](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/tyoaikakirjanpito.md)
+
+
 ## Asennus
 
 1. Riippuvuudet voi asentaa komennolla:
@@ -60,7 +65,7 @@ Testikattavuusraportin saa komennolla:
 poetry run invoke coverage-report
 ```
 
-Raportti generoituu _htmlcov_-hakemistoon.
+Raportti löytyy nyt _htmlcov_-hakemistosta.
 
 ### Pylint
 
