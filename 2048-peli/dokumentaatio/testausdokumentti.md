@@ -12,7 +12,7 @@ Sovelluslogiikasta vastaavaa `Matrix`-luokkaa testataan [matrix_test.py -tiedost
 
 ### Testauskattavuus
 
-Ottamatta huomioon User Interface-luokkia, sovelluksen testauksen haarautumakattavuus on 93%
+Ottamatta huomioon User Interface-luokkia, sovelluksen testauksen haarautumakattavuus on 92%
 
 ![](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/kuvat/coveragereport.png)
 
