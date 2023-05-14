@@ -1,8 +1,4 @@
 # Vaatimusmäärittely 2048-peli
-## Sovelluksen tarkoitus
-One player game
-
-# Vaatimusmäärittely
 
 ## Sovelluksen tarkoitus
 
@@ -10,15 +6,15 @@ Sovellus on vuoropohjainen viihdetarkoitukseen oleva peli, jossa käytetään nu
 
 ## Käyttäjät
 
-Sovelluksella on ainoastaan yksi käyttäjärooli eli pelaaja.
+Sovelluksella on ainoastaan yksi käyttäjärooli eli pelaaja. (One-player-game)
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu kolmesta eri näkymästä
+Sovellus koostuu neljästä eri näkymästä
 
-laita tähän piirros havainnollistamaan.
+![](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/kuvat/uiluonnos.png)
 
-Sovellus aukeaa aloitusnäkymään, josta on mahdollista siirtyä pelivaiheeseen. Kun pelaaja häviää niin sovellus avaa lopetusnäkymän, josta pääsee takaisin pelivaiheeseen painamalla välilyönti-näppäintä.
+Sovellus aukeaa aloitusnäkymään, josta on mahdollista siirtyä pelivaiheeseen. Kun pelaaja häviää tai voittaa, niin sovellus avaa lopetus- tai voittonäkymän, joista pääsee takaisin pelivaiheeseen painamalla välilyönti-näppäintä. 
 
 ## Perusversion tarjoama toiminnallisuus
 
@@ -44,5 +40,8 @@ Sovellus aukeaa aloitusnäkymään, josta on mahdollista siirtyä pelivaiheeseen
 - Peliä voisi jatkaa luvun 2048 saamisen jälkeen
 - Dark mode laatat olisivat kivemman väriset
 - Highscoren-tallettamiseen voisi käyttää sql-tietokantaa ja pelin päätyttyä, top3 ennätystä näytettäisiin
-- Kun pelaaja ylittäisi Highscoren, sovellus kysyisi häneltä nicknamea ja hän pääsisi top3-scoreboardiin. 
+- Kun pelaaja ylittäisi Highscoren, sovellus kysyisi häneltä nicknamea ja hän pääsisi top3-scoreboardiin 
+- pelinäkymän ulkopuolella voisi käyttää myös hiirtä näppäimistön lisäksi eli esim start-nappula olisi olemassa ja sitä voisi klikata
+- laattojen yhdistymiseen voisi lisätä ääniefektin
+- lisää värivaihtoehtoja!
 

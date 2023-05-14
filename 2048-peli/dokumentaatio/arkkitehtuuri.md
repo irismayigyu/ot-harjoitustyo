@@ -13,11 +13,11 @@ flowchart LR
 
 ## Pakkausrakenne ja tiedostoista lyhyesti
 
-Ui sisältää käyttöliittymän tiedostot grid.py, won.py, start.py ja ending.py. Jokainen kuvaa jotain käyttöliittymän näyttöä sovelluksessa. Grid piirtää pelinäkymän ja ruudukon matrix.py:n mukaisesti, ja kutsuu won.py ja ending.py:n luokkia. Start.py kutsuu grid.py:tä. Ui sisältää piirtämisen sekä sen miten käyttäjä voi käyttää sovellusta. 
+Ui sisältää käyttöliittymän tiedostot grid, won, start ja ending. Jokainen kuvaa jotain käyttöliittymän näyttöä sovelluksessa. Grid piirtää pelinäkymän ja ruudukon matrix-tiedoston mukaisesti, ja kutsuu tiedostojen won ja ending luokkia. Start kutsuu gridiä. UI sisältää piirtämisen sekä sen miten käyttäjä voi käyttää sovellusta. 
 
-Ui:n grid.py:hyn menee myös data-kansion highscore.py, joka sisältää highscoren tekstikansiossa. 
+Ui:n grid-tiedostoon menee myös data-kansion tekstitiedosto highscore, joka sisältää viimeisimmän highscoren. 
 
-Services-kansion ainoa tiedosto on matrix.py, joka hoitaa yksinään sovelluslogiikan, jota grid.py mallintaa.
+Services-kansion ainoa tiedosto on matrix, joka hoitaa yksinään sovelluslogiikan.
 
 # Käyttöliittymä
 
@@ -28,7 +28,7 @@ UI sisältää neljä erilaista näkymää:
 - Voittoruutu
 - Häviämisruutu
 
-Jokainen näistä on toteutettu omana luokkanaan ja ruuduista yksi on aina kerrallaan näkyvänä. Käyttöliittymä on pyritty eristämään sovelluslogiikasta. Se kutsuu services Matrix-luokan metodeja.
+Jokainen näistä on toteutettu omana luokkanaan ja ruuduista yksi on aina kerrallaan näkyvänä. Käyttöliittymä on pyritty eristämään sovelluslogiikasta. Peliruutu kutsuu services pakkauksen Matrix-luokan metodeja.
 
 
 ## Sovelluslogiikka
@@ -44,7 +44,6 @@ Luokka Matrix sisältää koko sovelluslogiikan. Siellä luodaan matriisi, joka 
       }
 ```
 
-
 Esimerkkejä luokan metodeista ovat esim: 
 
 
@@ -58,7 +57,7 @@ Kansio data, sisältää highscore-tiedoston johon tallentuu suurin highscore. K
 
 ## Luokkakaavio
 
-Alla vielä luokkakaavio ohjelman luokista. (main on funktio omassa tiedostossaan). Colours on luokka, jossa luodaan värivaihtoehdot ja HandleHighscore-luokassa käsitellään datan highscore.py-tiedostoa.
+Alla vielä luokkakaavio ohjelman luokista. (main on funktio omassa tiedostossaan). Colours on luokka, jossa luodaan värivaihtoehdot ja HandleHighscore-luokassa käsitellään datan highscore-tiedostoa.
 
 ```mermaid
  classDiagram
@@ -77,14 +76,6 @@ Alla vielä luokkakaavio ohjelman luokista. (main on funktio omassa tiedostossaa
 ```
 
 
-```mermaid
- sequenceDiagram
-      participant grid
-      participant matrix
-      grid ->> matrix: movement(up)
-      matrix ->> grid: movement_up()
-      
-```
 ## Päätoiminnallisuudet
 
 Seuraavaksi esimerkkejä ohjelman päätoiminnallisuuksista sekvenssikaavioina:

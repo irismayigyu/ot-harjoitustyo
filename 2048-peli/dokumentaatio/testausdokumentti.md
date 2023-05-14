@@ -8,16 +8,14 @@ Sillä sovelluksen sovelluslogiikan hoitaa vain yksi luokka, integraatiotestaust
 
 ### Sovelluslogiikka
 
-Sovelluslogiikasta vastaavaa `Matrix`-luokkaa testataan [matrix_test.py -tiedostossa](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/src/tests/matrix_test.py)-testiluokalla.
+Sovelluslogiikasta vastaavaa `Matrix`-luokkaa testataan [matrix_test.py -tiedostossa](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/src/tests/matrix_test.py)-testiluokalla. Myös HandleHighscorea ja Colours luokkaa on testattu.
 
 ### Testauskattavuus
 
 Ottamatta huomioon User Interface-luokkia, sovelluksen testauksen haarautumakattavuus on 93%
 
-![](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/kuvakaappaukset/coveragereport.png)
+![](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/kuvat/coveragereport.png)
 
-
-Testaamatta jäivät _build.py_- ja _initialize\_database.py_-tiedostojen suorittaminen komentoriviltä. Nämä olisi myös voinut jättää testikattavuuden ulkopuolelle. Lisäksi testaatamatta jäivät mm. tilanteet, joissa haetaan kirjautumattoman käyttäjän tekemättömät tehtävät ja uloskirjautuminen.
 
 ## Järjestelmätestaus
 
@@ -34,4 +32,4 @@ Melkein kaikki [määrittelydokumentin](https://github.com/irismayigyu/ot-harjoi
 
 ## Jääneet laatuongelmat
 
-keksi jotai...
+Ajan salliessa testejä voisi lisätä vielä. 

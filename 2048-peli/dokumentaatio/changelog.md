@@ -24,3 +24,4 @@
 - Laatat liikkuvat sulavemmin
 - Viimeistelty liikkumisen ja yhdistämisen rakennetta+logiikkaa
 - Score toimii ja HighScore-luokka luotu
+- dokumentaatio viimeistylty esim sekvenssikaaviot luotu
