@@ -75,5 +75,5 @@ Tiedoston [.pylintrc](./.pylintrc) määrittelemät tarkistukset suoritetaan kom
 poetry run invoke lint
 ```
 
-# HUOM
+# Huom!
 Sovelluksen dokumentaation rakenne on mallinnettu Ohjelmistotekniikka-kurssin referenssisovelluksesta!
