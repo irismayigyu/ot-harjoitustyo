@@ -23,8 +23,10 @@
 | 5.4. | 3h   | dokumentontia, arkkitehtuuria, testejä|
  8.4. | 4h   | toiminnallisuutta|
 | 9.4. | 3h   | arkkitehtuuria, viimeistelyä|
-| 10.4. | 3h   |viimeistelyä|
+| 10.4. | 2h   |viimeistelyä|
 | 11.4. | 3h   |voitto-screen|
-| 11.4. | 4h   |dokumentointia, hienosäätöä|
+| 12.4. | 2h   |dokumentointia, hienosäätöä|
+| 13.4. | 3h   |dokumentointia, hienosäätöä|
+| 14.4. | 3h   |dokumentointia, viimeistelyä|
 
-yht: 71h
+yht: 83h

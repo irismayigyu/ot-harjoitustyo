@@ -12,7 +12,7 @@ Sovelluksella on ainoastaan yksi käyttäjärooli eli pelaaja. (One-player-game)
 
 Sovellus koostuu neljästä eri näkymästä
 
-![](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/kuvat/uiluonnos.png)
+![](https://github.com/irismayigyu/ot-harjoitustyo/blob/master/2048-peli/dokumentaatio/kuvat/uiluonnos.jpg)
 
 Sovellus aukeaa aloitusnäkymään, josta on mahdollista siirtyä pelivaiheeseen. Kun pelaaja häviää tai voittaa, niin sovellus avaa lopetus- tai voittonäkymän, joista pääsee takaisin pelivaiheeseen painamalla välilyönti-näppäintä. 
 
