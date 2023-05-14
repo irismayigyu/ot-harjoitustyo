@@ -1,6 +1,6 @@
 # 2048
 
-Laita tähän linkki release kakkoseen ja viimeiseen.
+[Loppupalautus](https://github.com/irismayigyu/ot-harjoitustyo/releases/tag/loppupalautus)
 
 [Release 1](https://github.com/irismayigyu/ot-harjoitustyo/releases/tag/viikko5)
 
@@ -74,3 +74,6 @@ Tiedoston [.pylintrc](./.pylintrc) määrittelemät tarkistukset suoritetaan kom
 ```bash
 poetry run invoke lint
 ```
+
+# HUOM
+Sovelluksen dokumentaation rakenne on mallinnettu Ohjelmistotekniikka-kurssin referenssisovelluksesta!
